@@ -16,3 +16,7 @@ https://guide.elm-lang.org/install.html
 * run: `elm reactor` (or `elm reactor -p 8100`)
 * build module for production: `elm make app/Main.elm --output=docs/main.js`
 * build HTML for production: `elm make app/Main.elm --output=docs/test.html`
+
+## Formatting
+
+Please run [elm-format](https://github.com/avh4/elm-format) on all your code before pushing to the repo for [consistency](https://github.com/avh4/elm-format#elm-format).
