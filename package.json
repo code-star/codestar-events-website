@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "elm format",
-    "build": "elm make app/src/Main.elm --output=docs/main.js",
+    "develop": "elm make app/src/Main.elm --output=docs/main.js",
     "watch": "npm-watch"
   },
   "watch": {
-    "build": "app/**/*.elm"
+    "develop": "app/**/*.elm"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/code-star/elm-codestar-website#readme",
   "dependencies": {
+    "nodemon": "^1.11.0",
     "npm-watch": "^0.2.0"
   }
 }

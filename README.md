@@ -19,7 +19,7 @@ https://guide.elm-lang.org/install.html
 	* in docs dir run `http-server`
 * go to http://localhost:8080
 
-
+	
 ## Formatting
 
 Please run [elm-format](https://github.com/avh4/elm-format) on all your code before pushing to the repo for [consistency](https://github.com/avh4/elm-format#elm-format).

@@ -66,40 +66,42 @@ view model =
         [ style 
             [ ("text-align", "center")
             , ("height", "100vh")
+            , ("display", "flex")
+            , ("align-items", "center")
             ]
         ]
-        [ input [ onInput Name, value model.name ] []
-        , br [] []
-        , text (String.reverse model.name)
-        , grid []
-            [ cell [ Material.Grid.size All 4 ]
-                [ h4 [] [text "Cell 1"]
+        --[ input [ onInput Name, value model.name ] []
+        --, br [] []
+        --, text (String.reverse model.name)
+        [ grid []
+            --[ cell [ Material.Grid.size All 4 ]
+            --    [ h4 [] [text "Cell 1"]
+            --    ]
+            --, cell [ Material.Grid.offset All 2, Material.Grid.size All 4 ]
+            --    [ h4 [] [text "Cell 2"]
+            --    , p [] [text "This cell is offset by 2"]
+            --    ]
+            --, cell [ Material.Grid.size All 6 ]
+            --    [ h4 [] [text "Cell 3"]
+            --    ]
+            --, cell [ Material.Grid.size Tablet 6, Material.Grid.size Desktop 12, Material.Grid.size Phone 2 ]
+            --    [ h4 [] [text "Cell 4"]
+            --    , p [] [text "Size varies with device"]
+            --    ]
+            [ cell [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
+                [ img 
+                    [ src "/img/codestar-logo.svg"
+                    , width 382     
+                    ] []
+                , p [] [ text "De mogelijkheden in de digitale wereld zijn eindeloos. Uitdagingen vaak complex. Wij ontwikkelen moderne software die simpel te gebruiken is. Agile en productief, met gebruik van de nieuwste technieken. Wij programmeren. Met ons hoofd én met ons hart. Voor organisaties die de volgende stap willen zetten." ]
+                , p [] [ text "Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar." ]
                 ]
-            , cell [ Material.Grid.offset All 2, Material.Grid.size All 4 ]
-                [ h4 [] [text "Cell 2"]
-                , p [] [text "This cell is offset by 2"]
-                ]
-            , cell [ Material.Grid.size All 6 ]
-                [ h4 [] [text "Cell 3"]
-                ]
-            , cell [ Material.Grid.size Tablet 6, Material.Grid.size Desktop 12, Material.Grid.size Phone 2 ]
-                [ h4 [] [text "Cell 4"]
-                , p [] [text "Size varies with device"]
-                ]
-            , cell [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
-                [ p [ style [ ("background-color", "red") ] ] [ text "Test"] ]
             ]
-        , img 
-            [ src "/app/img/codestar-logo.svg"
-            , width 382     
-            ] []
-        , p [] [ text "De mogelijkheden in de digitale wereld zijn eindeloos. Uitdagingen vaak complex. Wij ontwikkelen moderne software die simpel te gebruiken is. Agile en productief, met gebruik van de nieuwste technieken. Wij programmeren. Met ons hoofd én met ons hart. Voor organisaties die de volgende stap willen zetten." ]
-        , p [] [ text "Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar." ]
         ]
     ]
 
 
 -- Material.Grid requires you to load in the Material CSS. So can't use elm-reactor
--- Use npm and watch for now
+-- Use npm-watch for now (bugs in MacOS Sierra)
 -- Use webpack later?
 -- Add task for elm-format
