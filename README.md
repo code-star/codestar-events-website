@@ -23,3 +23,7 @@ https://guide.elm-lang.org/install.html
 ## Formatting
 
 Please run [elm-format](https://github.com/avh4/elm-format) on all your code before pushing to the repo for [consistency](https://github.com/avh4/elm-format#elm-format).
+
+* `npm install -g elm-format@exp`
+* commit your code before formatting?
+* `elm-format app/src/`
