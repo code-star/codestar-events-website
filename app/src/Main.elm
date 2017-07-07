@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Html exposing (Html, div, text, program, input, br, section, p)
+import Html exposing (Html, div, text, program, input, br, section, p, img)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 
@@ -69,6 +69,10 @@ view model =
         [ input [ onInput Name, value model.name ] []
         , br [] []
         , text (String.reverse model.name) 
+        , img 
+            [ src "/app/img/codestar-logo.svg"
+            , width 382     
+            ] []
         , p [] [ text "De mogelijkheden in de digitale wereld zijn eindeloos. Uitdagingen vaak complex. Wij ontwikkelen moderne software die simpel te gebruiken is. Agile en productief, met gebruik van de nieuwste technieken. Wij programmeren. Met ons hoofd én met ons hart. Voor organisaties die de volgende stap willen zetten." ]
         , p [] [ text "Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar." ]
         ]
