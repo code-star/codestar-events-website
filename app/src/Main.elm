@@ -5,6 +5,9 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 
 import Material.Grid exposing (grid, cell, size, Device(..))
+import Material.Button as Button
+import Material.Options as Options exposing (Style)
+import Material
 
 import Msg as Main exposing (..)
 
@@ -24,11 +27,12 @@ main =
 -- MODEL
 type alias Model =
     { name: String
+    , mdl : Material.Model
     }
 
 init : (Model, Cmd Msg)
 init =
-  (Model "Elm", Cmd.none)
+  (Model "Elm" Material.model, Cmd.none)
 
 
 -- UPDATE
@@ -37,9 +41,13 @@ updateCmd msg model =
     Cmd.batch
         [ ]
 
+-- button example: https://github.com/debois/elm-mdl/blob/master/demo/Demo/Buttons.elm
 updateModel : Msg -> Model -> Model
 updateModel msg model =
     case msg of
+        Mdl msg_ -> 
+            -- Material.update Mdl msg_ model
+            model
         Name name ->
             { model | name = name }
 
@@ -95,6 +103,11 @@ view model =
                     ] []
                 , p [] [ text "De mogelijkheden in de digitale wereld zijn eindeloos. Uitdagingen vaak complex. Wij ontwikkelen moderne software die simpel te gebruiken is. Agile en productief, met gebruik van de nieuwste technieken. Wij programmeren. Met ons hoofd én met ons hart. Voor organisaties die de volgende stap willen zetten." ]
                 , p [] [ text "Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar." ]
+                , Button.render Mdl [0] model.mdl
+                  [ Button.raised
+                  -- , Options.onClick MyClickMsg
+                  ]
+                  [ text "Menu NYI"]
                 ]
             ]
         ]
