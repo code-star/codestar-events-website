@@ -15489,17 +15489,8 @@ var _code_star$elm_codestar_website$Main$view = function (model) {
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
-														{
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'height', _1: '300px'},
-															_1: {ctor: '[]'}
-														}),
-													_1: {
-														ctor: '::',
-														_0: _FabienHenon$elm_infinite_scroll$InfiniteScroll$infiniteScroll(_code_star$elm_codestar_website$Msg$InfiniteScrollMsg),
-														_1: {ctor: '[]'}
-													}
+													_0: _FabienHenon$elm_infinite_scroll$InfiniteScroll$infiniteScroll(_code_star$elm_codestar_website$Msg$InfiniteScrollMsg),
+													_1: {ctor: '[]'}
 												},
 												A2(_elm_lang$core$List$map, _code_star$elm_codestar_website$Main$viewContentItem, model.content)),
 											_1: {ctor: '[]'}

@@ -36,7 +36,7 @@ type alias Model =
     }
 
 initialContent : List String
-initialContent = [] --[ "hello", "infinite", "scroll", "world" ]
+initialContent = [] -- TODO [ "hello", "infinite", "scroll", "world" ]
 
 init : (Model, Cmd Msg)
 init =
@@ -144,8 +144,8 @@ view model =
             , cell 
                 [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
                 [ div 
-                    [ style [ ( "height", "300px" ) ]
-                    , InfiniteScroll.infiniteScroll InfiniteScrollMsg
+                    [ InfiniteScroll.infiniteScroll InfiniteScrollMsg
+                    -- TODO , style [ ( "height", "300px" ) ]
                     ]
                     (List.map viewContentItem model.content) 
                 ]
