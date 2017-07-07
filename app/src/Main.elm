@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Html exposing (Html, div, text, program, input, br, section, p, img, h4)
+import Html exposing (Html, div, text, program, input, br, section, p, img, h2, h4)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 
@@ -12,6 +12,9 @@ import Material
 import Msg as Main exposing (..)
 
 import GithubBanner.View exposing (..)
+
+import InfiniteScroll
+
 
 -- MAIN
 
@@ -28,11 +31,21 @@ main =
 type alias Model =
     { name: String
     , mdl : Material.Model
+    , infiniteScroll : InfiniteScroll.Model Msg
+    , content : List String
     }
+
+initialContent : List String
+initialContent = [] --[ "hello", "infinite", "scroll", "world" ]
 
 init : (Model, Cmd Msg)
 init =
-  (Model "Elm" Material.model, Cmd.none)
+    (Model "Elm" Material.model (InfiniteScroll.init loadMore) initialContent, Cmd.none)
+    --(   { name = "Elm"
+    --    , mdl = Material.Model
+    --    , infiniteScroll = InfiniteScroll.init loadMore
+    --    , content = initialContent
+    --    }, Cmd.none)
 
 
 -- UPDATE
@@ -50,10 +63,29 @@ updateModel msg model =
             model
         Name name ->
             { model | name = name }
+        InfiniteScrollMsg msg_ ->
+            let
+                ( infiniteScroll, cmd ) =
+                    InfiniteScroll.update InfiniteScrollMsg msg_ model.infiniteScroll
+            in
+                { model | infiniteScroll = infiniteScroll }
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     (updateModel msg model, updateCmd msg model)
+
+
+--type Msg
+--    -- ... add this message
+--    | OnDataRetrieved (Result Http.Error String)
+
+loadMore : InfiniteScroll.Direction -> Cmd Msg
+loadMore dir =
+    --Http.getString "https://example.com/retrieve-more"
+    --    |> Http.send OnDataRetrieved
+    Cmd.none    
+
+
 
 -- SUBSCRIPTIONS
 subscriptions : Model -> Sub Msg
@@ -109,9 +141,21 @@ view model =
                   ]
                   [ text "Menu NYI"]
                 ]
+            , cell 
+                [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
+                [ div 
+                    [ style [ ( "height", "300px" ) ]
+                    , InfiniteScroll.infiniteScroll InfiniteScrollMsg
+                    ]
+                    (List.map viewContentItem model.content) 
+                ]
             ]
         ]
     ]
+
+viewContentItem : String -> Html Msg
+viewContentItem contentStr =
+    h2 [] [text contentStr ]   
 
 
 -- Material.Grid requires you to load in the Material CSS. So can't use elm-reactor
