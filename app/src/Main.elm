@@ -1,8 +1,10 @@
 module Main exposing (..)
 
-import Html exposing (Html, div, text, program, input, br, section, p, img)
+import Html exposing (Html, div, text, program, input, br, section, p, img, h4)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
+
+import Material.Grid exposing (grid, cell, size, Device(..))
 
 import Msg as Main exposing (..)
 
@@ -68,7 +70,25 @@ view model =
         ]
         [ input [ onInput Name, value model.name ] []
         , br [] []
-        , text (String.reverse model.name) 
+        , text (String.reverse model.name)
+        , grid []
+            [ cell [ Material.Grid.size All 4 ]
+                [ h4 [] [text "Cell 1"]
+                ]
+            , cell [ Material.Grid.offset All 2, Material.Grid.size All 4 ]
+                [ h4 [] [text "Cell 2"]
+                , p [] [text "This cell is offset by 2"]
+                ]
+            , cell [ Material.Grid.size All 6 ]
+                [ h4 [] [text "Cell 3"]
+                ]
+            , cell [ Material.Grid.size Tablet 6, Material.Grid.size Desktop 12, Material.Grid.size Phone 2 ]
+                [ h4 [] [text "Cell 4"]
+                , p [] [text "Size varies with device"]
+                ]
+            , cell [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
+                [ p [ style [ ("background-color", "red") ] ] [ text "Test"] ]
+            ]
         , img 
             [ src "/app/img/codestar-logo.svg"
             , width 382     
@@ -77,3 +97,9 @@ view model =
         , p [] [ text "Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar." ]
         ]
     ]
+
+
+-- Material.Grid requires you to load in the Material CSS. So can't use elm-reactor
+-- Use npm and watch for now
+-- Use webpack later?
+-- Add task for elm-format

@@ -1,0 +1,29 @@
+{
+  "name": "elm-codestar-website",
+  "version": "1.0.0",
+  "description": "Elm rebuild of codestar.nl",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "elm format",
+    "build": "elm make app/src/Main.elm --output=docs/main.js",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": "app/**/*.elm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-star/elm-codestar-website.git"
+  },
+  "private": true,
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/code-star/elm-codestar-website/issues"
+  },
+  "homepage": "https://github.com/code-star/elm-codestar-website#readme",
+  "dependencies": {
+    "npm-watch": "^0.2.0"
+  }
+}

@@ -13,9 +13,12 @@ https://guide.elm-lang.org/install.html
 
 * nvm use 8.0.0
 * installation: `elm package install`
-* run: `elm reactor` (or `elm reactor -p 8100`)
-* build module for production: `elm make app/Main.elm --output=docs/main.js`
-* build HTML for production: `elm make app/Main.elm --output=docs/test.html`
+* in terminal 1
+	* in root dir run `npm run watch`
+* in terminal 2
+	* in docs dir run `http-server`
+* go to http://localhost:8080
+
 
 ## Formatting
 
