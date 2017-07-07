@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Html exposing (Html, div, text, program, input, br, section)
+import Html exposing (Html, div, text, program, input, br, section, p)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 
@@ -53,10 +53,23 @@ subscriptions model =
 -- VIEW
 view : Model -> Html Msg
 view model =
-    div []
+    div [ style
+            [ ("background-color", "#0f569a") 
+            , ("color", "white")
+            , ("height", "100vh")
+            ]
+        ]
     [ viewGithubBanner
-    , section []
+    , section 
+        [ style 
+            [ ("text-align", "center")
+            , ("height", "100vh")
+            ]
+        ]
         [ input [ onInput Name, value model.name ] []
         , br [] []
-        , text (String.reverse model.name) ]
+        , text (String.reverse model.name) 
+        , p [] [ text "De mogelijkheden in de digitale wereld zijn eindeloos. Uitdagingen vaak complex. Wij ontwikkelen moderne software die simpel te gebruiken is. Agile en productief, met gebruik van de nieuwste technieken. Wij programmeren. Met ons hoofd én met ons hart. Voor organisaties die de volgende stap willen zetten." ]
+        , p [] [ text "Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar." ]
+        ]
     ]
