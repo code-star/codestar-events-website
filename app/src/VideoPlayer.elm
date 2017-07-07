@@ -6,8 +6,6 @@ import Html.Events exposing (onClick, onInput)
 
 import Msg as Main exposing (..)
 
-import GithubBanner.View exposing (..)
-
 -- MAIN
 
 main =
@@ -28,8 +26,22 @@ type alias VideoItem =
     { title: String
     , description: String
     , videoId: String
+    , selected: Bool
 
     }
+
+videoItems : List VideoItem
+videoItems = [{ title = "Title of video"
+        , description = "Description of video"
+        , videoId = "#ABC"
+        , selected = True
+        }
+        , { title = "Title of video 2"
+        , description = "Description of video 2"
+        , videoId = "#DEF"
+        , selected = False
+        }
+    ]
 
 init : (Model, Cmd Msg)
 init =
@@ -79,11 +91,14 @@ videoPlayerListItemStyle =
       , ("boxSizing", "border-box")
       ]
 
-videoPlayerListItemSelectedStyle : Attribute msg
-videoPlayerListItemSelectedStyle =
-    style
-      [ ("backgroundColor", "rgb(238,129,0)")
-      ]
+-- use a function to return a selected style or nothing
+videoPlayerListItemSelectedStyle : VideoItem -> Attribute msg
+videoPlayerListItemSelectedStyle v =
+    if v.selected then
+        style
+          [ ("backgroundColor", "rgb(238,129,0)") ]
+    else
+        style[]
 
 videoPlayerListItemTitleStyle : Attribute msg
 videoPlayerListItemTitleStyle =
@@ -101,9 +116,23 @@ videoPlayerListItemDescriptionStyle =
       , ("overflow", "hidden")
       ]
 
--- 238, 129, 0
 
+-- RENDER VIDEOS
 
+toVideoItem : VideoItem -> Html msg
+toVideoItem v =
+  div [class "video-list-item", videoPlayerListItemStyle, videoPlayerListItemSelectedStyle v] [
+      div [class "video-list-item-title", videoPlayerListItemTitleStyle] [
+          text v.title
+      ],
+      div [class "video-list-item-description", videoPlayerListItemDescriptionStyle] [
+          text v.description
+      ]
+  ]
+
+renderVideos : List VideoItem -> Html msg
+renderVideos video =
+  div [] (List.map toVideoItem video)
 
 -- UPDATE
 updateCmd : Msg -> Model -> Cmd Msg
@@ -132,21 +161,6 @@ view model =
     div [class "video-player", videoPlayerStyle]
     [ div [class "video-container", videoPlayerVideoStyle] [text ("test")]
     , div [class "video-list", videoPlayerListStyle] [
-        div [class "video-list-item", videoPlayerListItemStyle, videoPlayerListItemSelectedStyle] [
-            div [class "video-list-item-title", videoPlayerListItemTitleStyle] [
-                text("Title of video")
-            ],
-            div [class "video-list-item-description", videoPlayerListItemDescriptionStyle] [
-                text("Description of this video...")
-            ]
-        ]
-        , div [class "video-list-item", videoPlayerListItemStyle] [
-              div [class "video-list-item-title", videoPlayerListItemTitleStyle] [
-                  text("Title of video")
-              ],
-              div [class "video-list-item-description", videoPlayerListItemDescriptionStyle] [
-                  text("Description of this video...")
-              ]
-          ]
+        renderVideos videoItems
     ]
     ]
