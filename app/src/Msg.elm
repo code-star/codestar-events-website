@@ -1,8 +1,10 @@
 module Msg exposing (..)
 
-import Material
 import InfiniteScroll
+import Material
 
-type Msg = Name String
+
+type Msg
+    = Name String
     | Mdl (Material.Msg Msg)
     | InfiniteScrollMsg InfiniteScroll.Msg
