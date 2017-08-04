@@ -12,11 +12,8 @@ https://guide.elm-lang.org/install.html
 ## Run
 
 * nvm use 8.0.0
-* installation: `elm package install`
-* in terminal 1
-	* in root dir run `npm run watch`
-* in terminal 2
-	* in root dir run `http-server docs`
+* installation: `npm install`
+* run `npm run start`
 * go to http://localhost:8080
 
 	

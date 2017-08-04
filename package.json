@@ -8,7 +8,8 @@
     "format": "elm format",
     "develop": "elm make app/src/Main.elm --output=docs/main.js",
     "watch": "npm-watch",
-    "start": "elm format && concurrently --kill-others \"http-server docs\" \"npm run watch\""
+    "start": "elm format && concurrently --kill-others \"http-server docs\" \"npm run watch\"",
+    "postinstall": "elm package install"
   },
   "watch": {
     "develop": "app/**/*.elm"
@@ -25,8 +26,11 @@
   },
   "homepage": "https://github.com/code-star/elm-codestar-website#readme",
   "dependencies": {
-    "http-server": "^0.10.0",
     "npm-watch": "^0.2.0"
+  },
+  "peerDependencies": {
+    "http-server": "^0.10.0",
+    "elm": "^0.18.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
