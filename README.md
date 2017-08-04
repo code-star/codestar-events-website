@@ -16,6 +16,8 @@ https://guide.elm-lang.org/install.html
 * run `npm run start`
 * go to http://localhost:8080
 
+Watch does not work well on Macos? https://github.com/M-Zuber/npm-watch/issues/35
+
 	
 ## Formatting
 

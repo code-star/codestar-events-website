@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "elm-format app/src",
+    "format": "elm-format app/src --yes",
+    "format-validate": "elm-format app/src --validate",
     "develop": "elm make app/src/Main.elm --output=docs/main.js",
     "watch": "npm-watch",
-    "start": "concurrently --kill-others \"http-server docs\" \"npm run watch\"",
+    "watch-alt": "node watch.js",
+    "start": "npm run format && concurrently --kill-others \"http-server docs\" \"npm run watch-alt\"",
     "postinstall": "elm package install"
   },
   "watch": {
