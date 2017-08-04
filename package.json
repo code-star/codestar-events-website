@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "elm format",
+    "format": "elm-format app/src",
     "develop": "elm make app/src/Main.elm --output=docs/main.js",
     "watch": "npm-watch",
-    "start": "elm format && concurrently --kill-others \"http-server docs\" \"npm run watch\"",
+    "start": "concurrently --kill-others \"http-server docs\" \"npm run watch\"",
     "postinstall": "elm package install"
   },
   "watch": {
@@ -30,7 +30,8 @@
   },
   "peerDependencies": {
     "http-server": "^0.10.0",
-    "elm": "^0.18.0"
+    "elm": "^0.18.0",
+    "elm-format": "^0.7.0-exp"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
