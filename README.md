@@ -3,20 +3,24 @@ Elm rebuild of codestar.nl
 
 https://guide.elm-lang.org/install.html
 
-## Generate
-
-* nvm use 8.0.0
-* `npm install -g elm`
-* `elm package install`
 
 ## Run
 
 * nvm use 8.0.0
 * installation: `npm install`
+* set up symlink for debugging: `ln -s /docs/img /debug/img`
 * run `npm run start`
-* go to http://localhost:8080
+* go to http://localhost:8000/debug/index.html
 
-Watch does not work well on Macos? https://github.com/M-Zuber/npm-watch/issues/35
+npm-watch does not work correctly on MacOS: https://github.com/M-Zuber/npm-watch/issues/35
+
+
+## Build
+
+* nvm use 8.0.0
+* run `npm run build`
+* Result is in 'docs' dir. You can run `http-server` in it to test and when pushing the repo the files will be hosted on gh-pages from de docs dir.
+
 
 	
 ## Formatting

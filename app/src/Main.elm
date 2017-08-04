@@ -156,7 +156,7 @@ view model =
                 --    ]
                 [ cell [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
                     [ img
-                        [ src "/img/codestar-logo.svg"
+                        [ src "img/codestar-logo.svg"
                         , width 382
                         ]
                         []

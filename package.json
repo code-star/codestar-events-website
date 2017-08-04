@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "elm-format app/src --yes",
     "format-validate": "elm-format app/src --validate",
-    "develop": "elm make app/src/Main.elm --output=docs/main.js",
+    "build": "npm run format && elm make app/src/Main.elm --output=docs/main.js",
     "watch": "npm-watch",
     "watch-alt": "node watch.js",
-    "start": "npm run format && concurrently --kill-others \"http-server docs\" \"npm run watch-alt\"",
+    "start": "npm run format && elm-reactor",
     "postinstall": "elm package install"
   },
   "watch": {
