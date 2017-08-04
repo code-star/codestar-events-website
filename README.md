@@ -16,7 +16,7 @@ https://guide.elm-lang.org/install.html
 * in terminal 1
 	* in root dir run `npm run watch`
 * in terminal 2
-	* in docs dir run `http-server`
+	* in root dir run `http-server docs`
 * go to http://localhost:8080
 
 	
