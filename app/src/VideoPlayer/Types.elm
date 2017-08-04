@@ -1,5 +1,6 @@
 module VideoPlayer.Types exposing (..)
 
+
 type alias Model =
     { message : String
     , videos : List VideoItem

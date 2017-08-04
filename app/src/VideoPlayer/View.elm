@@ -3,9 +3,10 @@ module VideoPlayer.View exposing (..)
 import Html exposing (Attribute, Html, br, div, iframe, input, program, section, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
-import VideoPlayer.Types exposing (..)
-import VideoPlayer.Style exposing (..)
 import VideoPlayer.State exposing (..)
+import VideoPlayer.Style exposing (..)
+import VideoPlayer.Types exposing (..)
+
 
 toVideoItem : VideoItem -> Html Msg
 toVideoItem v =
@@ -47,6 +48,7 @@ sliceText text limit =
         String.slice 0 limit text ++ "..."
     else
         text
+
 
 view : Model -> Html Msg
 view model =

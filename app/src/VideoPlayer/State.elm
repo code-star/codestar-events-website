@@ -3,9 +3,11 @@ module VideoPlayer.State exposing (..)
 import Http
 import VideoPlayer.Types exposing (..)
 
+
 type Msg
     = NewVideos (Result Http.Error (List VideoItem))
     | SelectVideo VideoItem
+
 
 youtubePlaylistId : String
 youtubePlaylistId =
@@ -28,4 +30,3 @@ initialModel =
     , videos = []
     , selectedVideoId = "Dl5eCpaT430"
     }
-

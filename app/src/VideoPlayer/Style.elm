@@ -4,6 +4,7 @@ import Html exposing (Attribute)
 import Html.Attributes exposing (..)
 import VideoPlayer.Types exposing (VideoItem)
 
+
 videoPlayerStyle : Attribute msg
 videoPlayerStyle =
     style

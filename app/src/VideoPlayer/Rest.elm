@@ -2,8 +2,9 @@ module VideoPlayer.Rest exposing (..)
 
 import Http
 import Json.Decode exposing (Decoder, bool, field, int, map2, oneOf, string, succeed)
-import VideoPlayer.Types exposing (..)
 import VideoPlayer.State exposing (..)
+import VideoPlayer.Types exposing (..)
+
 
 getVideos : ( String, String ) -> Cmd Msg
 getVideos ( apiKey, playlistId ) =
