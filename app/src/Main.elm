@@ -4,8 +4,6 @@ import GithubBanner.View exposing (..)
 import Html exposing (Html, br, div, h2, h4, img, input, p, program, section, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
-import Http
-import InfiniteScroll
 import Material
 import Material.Button as Button
 import Material.Grid exposing (Device(..), cell, grid, size)
@@ -32,23 +30,12 @@ main =
 type alias Model =
     { name : String
     , mdl : Material.Model
-    , infiniteScroll : InfiniteScroll.Model Msg
-    , content : List String
     }
-
-
-initialContent : List String
-initialContent =
-    [ "hallo jisdklajaskldj slk;dfjas lfklsadjfklsad;j fsakl;jfsal;kjfasldk;jfsdkl;j fsldk;jfklsad ;jfsladk;jf lsadk;jfklsadjk;l sdjl;sdjflj skdkf;ljsa dlfjsad kl;fjsal;k jfda" ]
-
-
-
--- TODO [ "hello", "infinite", "scroll", "world" ]
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( Model "Elm" Material.model (InfiniteScroll.init loadMore) initialContent, Cmd.none )
+    ( Model "Elm" Material.model, Cmd.none )
 
 
 
@@ -109,54 +96,11 @@ update msg model =
         Name name ->
             ( { model | name = name }, Cmd.none )
 
-        InfiniteScrollMsg msg_ ->
-            let
-                --four = Debug.log "Inf Scroll msg" 4
-                ( infiniteScroll, cmd ) =
-                    InfiniteScroll.update InfiniteScrollMsg msg_ model.infiniteScroll
-            in
-            ( { model | infiniteScroll = infiniteScroll }, cmd )
-
-        OnDataRetrieved (Err _) ->
-            let
-                --one = Debug.log "err" 1
-                -- Don't forget to handle error
-                infiniteScroll =
-                    InfiniteScroll.stopLoading model.infiniteScroll
-            in
-            ( { model | infiniteScroll = infiniteScroll }, Cmd.none )
-
-        OnDataRetrieved (Ok result) ->
-            let
-                --two = Debug.log "OK" 2
-                content =
-                    addContent result model.content
-
-                infiniteScroll =
-                    InfiniteScroll.stopLoading model.infiniteScroll
-            in
-            ( { model | content = content, infiniteScroll = infiniteScroll }, Cmd.none )
-
 
 
 --update : Msg -> Model -> ( Model, Cmd Msg )
 --update msg model =
 --    ( updateModel msg model, updateCmd msg model )
-
-
-loadMore : InfiniteScroll.Direction -> Cmd Msg
-loadMore dir =
-    Http.getString "/debug/pages.json"
-        |> Http.send OnDataRetrieved
-
-
-addContent : String -> List String -> List String
-addContent result content =
-    -- concat something from result to content
-    content ++ [ result ]
-
-
-
 -- SUBSCRIPTIONS
 
 
@@ -224,24 +168,8 @@ view model =
                     ]
                 , cell
                     [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
-                    [ div
-                        [ InfiniteScroll.infiniteScroll InfiniteScrollMsg
-                        , style [ ( "height", "300px" ), ( "border", "1px solid papayawhip" ), ( "overflow", "auto" ) ]
-                        ]
-                        (List.map viewContentItem model.content)
+                    [ div [] [ text "some text" ]
                     ]
                 ]
             ]
         ]
-
-
-viewContentItem : String -> Html Msg
-viewContentItem contentStr =
-    h2 [] [ text contentStr ]
-
-
-
--- Material.Grid requires you to load in the Material CSS. So can't use elm-reactor
--- Use npm-watch for now (bugs in MacOS Sierra)
--- Use webpack later?
--- Add task for elm-format
