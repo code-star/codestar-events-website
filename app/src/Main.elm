@@ -4,6 +4,7 @@ import GithubBanner.View exposing (..)
 import Html exposing (Html, br, div, h2, h4, img, input, p, program, section, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
+import Http
 import InfiniteScroll
 import Material
 import Material.Button as Button
@@ -38,7 +39,7 @@ type alias Model =
 
 initialContent : List String
 initialContent =
-    []
+    [ "hallo jisdklajaskldj slk;dfjas lfklsadjfklsad;j fsakl;jfsal;kjfasldk;jfsdkl;j fsldk;jfklsad ;jfsladk;jf lsadk;jfklsadjk;l sdjl;sdjflj skdkf;ljsa dlfjsad kl;fjsal;k jfda" ]
 
 
 
@@ -57,52 +58,102 @@ init =
 --    , content = initialContent
 --    }, Cmd.none)
 -- UPDATE
-
-
-updateCmd : Msg -> Model -> Cmd Msg
-updateCmd msg model =
-    Cmd.batch
-        []
-
-
-
+--updateCmd : Msg -> Model -> Cmd Msg
+--updateCmd msg model =
+--    Cmd.batch
+--        []
 -- button example: https://github.com/debois/elm-mdl/blob/master/demo/Demo/Buttons.elm
+{- updateModel : Msg -> Model -> Model
+   updateModel msg model =
+       case msg of
+           Mdl msg_ ->
+               -- Material.update Mdl msg_ model
+               model
 
+           Name name ->
+               { model | name = name }
 
-updateModel : Msg -> Model -> Model
-updateModel msg model =
-    case msg of
-        Mdl msg_ ->
-            -- Material.update Mdl msg_ model
-            model
+           InfiniteScrollMsg msg_ ->
+               let
+                   four = Debug.log "Inf Scroll msg" 4
+                   ( infiniteScroll, cmd ) =
+                       InfiniteScroll.update InfiniteScrollMsg msg_ model.infiniteScroll
+               in
+                   { model | infiniteScroll = infiniteScroll }
+           OnDataRetrieved (Err _) ->
+               let
+                   one = Debug.log "err" 1
+                   -- Don't forget to handle error
+                   infiniteScroll =
+                       InfiniteScroll.stopLoading model.infiniteScroll
+               in
+                   { model | infiniteScroll = infiniteScroll }
 
-        Name name ->
-            { model | name = name }
-
-        InfiniteScrollMsg msg_ ->
-            let
-                ( infiniteScroll, cmd ) =
-                    InfiniteScroll.update InfiniteScrollMsg msg_ model.infiniteScroll
-            in
-            { model | infiniteScroll = infiniteScroll }
+           OnDataRetrieved (Ok result) ->
+               let
+                   two = Debug.log "OK" 2
+                   content = addContent result model.content
+                   infiniteScroll = InfiniteScroll.stopLoading model.infiniteScroll
+               in
+                   { model | content = content, infiniteScroll = infiniteScroll }
+-}
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( updateModel msg model, updateCmd msg model )
+    case msg of
+        Mdl msg_ ->
+            -- Material.update Mdl msg_ model
+            ( model, Cmd.none )
+
+        Name name ->
+            ( { model | name = name }, Cmd.none )
+
+        InfiniteScrollMsg msg_ ->
+            let
+                --four = Debug.log "Inf Scroll msg" 4
+                ( infiniteScroll, cmd ) =
+                    InfiniteScroll.update InfiniteScrollMsg msg_ model.infiniteScroll
+            in
+            ( { model | infiniteScroll = infiniteScroll }, cmd )
+
+        OnDataRetrieved (Err _) ->
+            let
+                --one = Debug.log "err" 1
+                -- Don't forget to handle error
+                infiniteScroll =
+                    InfiniteScroll.stopLoading model.infiniteScroll
+            in
+            ( { model | infiniteScroll = infiniteScroll }, Cmd.none )
+
+        OnDataRetrieved (Ok result) ->
+            let
+                --two = Debug.log "OK" 2
+                content =
+                    addContent result model.content
+
+                infiniteScroll =
+                    InfiniteScroll.stopLoading model.infiniteScroll
+            in
+            ( { model | content = content, infiniteScroll = infiniteScroll }, Cmd.none )
 
 
 
---type Msg
---    -- ... add this message
---    | OnDataRetrieved (Result Http.Error String)
+--update : Msg -> Model -> ( Model, Cmd Msg )
+--update msg model =
+--    ( updateModel msg model, updateCmd msg model )
 
 
 loadMore : InfiniteScroll.Direction -> Cmd Msg
 loadMore dir =
-    --Http.getString "https://example.com/retrieve-more"
-    --    |> Http.send OnDataRetrieved
-    Cmd.none
+    Http.getString "/debug/pages.json"
+        |> Http.send OnDataRetrieved
+
+
+addContent : String -> List String -> List String
+addContent result content =
+    -- concat something from result to content
+    content ++ [ result ]
 
 
 
@@ -175,8 +226,7 @@ view model =
                     [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
                     [ div
                         [ InfiniteScroll.infiniteScroll InfiniteScrollMsg
-
-                        -- TODO , style [ ( "height", "300px" ) ]
+                        , style [ ( "height", "300px" ), ( "border", "1px solid papayawhip" ), ( "overflow", "auto" ) ]
                         ]
                         (List.map viewContentItem model.content)
                     ]
