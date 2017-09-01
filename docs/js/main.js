@@ -15588,9 +15588,18 @@ var _code_star$elm_codestar_website$Main$main = _elm_lang$html$Html$program(
 	{init: _code_star$elm_codestar_website$Main$init, view: _code_star$elm_codestar_website$Main$view, update: _code_star$elm_codestar_website$Main$update, subscriptions: _code_star$elm_codestar_website$Main$subscriptions})();
 
 var Elm = {};
+Elm['GithubBanner'] = Elm['GithubBanner'] || {};
+Elm['GithubBanner']['View'] = Elm['GithubBanner']['View'] || {};
+if (typeof _code_star$elm_codestar_website$GithubBanner_View$main !== 'undefined') {
+    _code_star$elm_codestar_website$GithubBanner_View$main(Elm['GithubBanner']['View'], 'GithubBanner.View', undefined);
+}
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _code_star$elm_codestar_website$Main$main !== 'undefined') {
     _code_star$elm_codestar_website$Main$main(Elm['Main'], 'Main', undefined);
+}
+Elm['Msg'] = Elm['Msg'] || {};
+if (typeof _code_star$elm_codestar_website$Msg$main !== 'undefined') {
+    _code_star$elm_codestar_website$Msg$main(Elm['Msg'], 'Msg', undefined);
 }
 
 if (typeof define === "function" && define['amd'])
