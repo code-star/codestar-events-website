@@ -1,3 +1,5 @@
+@orange: rgb(240,131,0);
+
 .codestar-page-wrapper {
   color: white;
 
@@ -6,28 +8,56 @@
     top: 0;
     right: 0;
     left: 0;
-    padding: 20px;
-    background-color: rgba(12, 77, 144, .5);
+    padding: 15px;
+    background-color: rgba(4, 27, 54, .9);
     z-index: 100;
+    text-align: center;
 
     .logo {
       height: 40px;
+      float: left;
     }
 
     h2 {
       font-size: 1.5em;
-      color: #ccc;
-      display: inline-block;
+      color: #fff;
+      display: inline;
       margin: 0 20px;
-      float: right;
+    }
+
+    .jobs-link {
+      display: inline-block;
+      background-color: @orange;
+      color: #fff;
+      padding: 2px 4px;
+      text-decoration: none;
+      margin-left: 10px;
+      font-size: 12px;
+      float: left;
+
+      &:hover {
+        background-color: darken(@orange, 2%);
+      }
     }
   }
 
-  .landing-page {
+  .page {
     text-align: center;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(#0c4d90 0%, #1464af 100%);
+
+    &.landing-page {
+      background: linear-gradient(#0c4d90 0%, #1464af 100%);
+    }
+
+    &.events-page {
+      background-color: #0c4d90;
+
+      iframe {
+        margin-bottom: 30px;
+        border: 4px solid fade(@orange, 60%);
+      }
+    }
   }
 }

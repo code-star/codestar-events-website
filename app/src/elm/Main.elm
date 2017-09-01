@@ -1,15 +1,16 @@
 module Main exposing (..)
 
-import Html exposing (Html, br, div, h1, h2, h4, img, input, p, program, section, text)
+import Html exposing (Html, a, br, div, h1, h2, h4, h5, iframe, img, input, p, program, section, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 import Material
-import Material.Color as Color
 import Material.Button as Button
-import Material.Grid exposing (Device(..), cell, grid, size)
-import Material.Options as Options exposing (Style, cs, css)
-import Material.Menu as Menu exposing (render)
 import Material.Card as Card exposing (..)
+import Material.Chip as Chip exposing (..)
+import Material.Color as Color
+import Material.Grid exposing (Device(..), cell, grid, size)
+import Material.Menu as Menu exposing (render)
+import Material.Options as Options exposing (Style, cs, css)
 import Msg as Main exposing (..)
 
 
@@ -39,6 +40,7 @@ init : ( Model, Cmd Msg )
 init =
     ( Model "Elm" Material.model, Cmd.none )
 
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
@@ -50,12 +52,14 @@ update msg model =
             ( { model | name = name }, Cmd.none )
 
 
+
 -- SUBSCRIPTIONS
 
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
+
 
 
 -- VIEW
@@ -67,27 +71,30 @@ view model =
         [ class "codestar-page-wrapper" ]
         [ div
             [ class "header" ]
-            [ img
-                [ src "img/codestar-logo.svg"
-                , class "logo"
+            [ a [ href "https://www.codestar.nl/" ]
+                [ img
+                    [ src "img/codestar-logo.svg"
+                    , class "logo"
+                    ]
+                    []
                 ]
-                []
             , h2 [] [ Html.text "Events & More" ]
+            , a [ href "https://www.codestar.nl/#join", class "jobs-link" ]
+                [ Html.text "We're hiring!" ]
             ]
-            , viewLandingPage model
-            , viewDummyPage model "green"
-            , viewDummyPage model "papayawhip"
-            , viewDifferencePage model
-            , viewJobsPage model
+        , viewLandingPage model
+        , eventsPage model "#0C4D90"
+        , viewDifferencePage model
+        , viewJobsPage model
         ]
 
 
 viewLandingPage : Model -> Html Msg
 viewLandingPage model =
     section
-        [ class "landing-page" ]
+        [ class "page landing-page" ]
         [ grid []
-            [ cell [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
+            [ cell [ Material.Grid.offset Desktop 3, Material.Grid.size Desktop 6, Material.Grid.size Tablet 10, Material.Grid.size Phone 12 ]
                 [ Card.view
                     [ css "width" "100%"
                     ]
@@ -102,18 +109,30 @@ viewLandingPage model =
                             , css "width" "100%"
                             , css "color" "rgb(240,131,0)"
                             ]
-                            [ Html.text "Coming up..." ]
+                            [ Html.text "September 28, 2017" ]
                         ]
                     , Card.text []
                         [ Html.text "Codestar invites you to an evening with Andre Staltz, a renowned expert on reactive programming and author/contributor to frameworks like Cycle.js and RxJS. He will enlighten us with two brand new and unique talks about functional and reactive programming respectively, tailored to full-stack developers that have experience with working with reactive streams. " ]
                     , Card.actions
                         [ Card.border ]
-                        [ Button.render Mdl [1,0] model.mdl
-                            [ Button.ripple, Button.accent ]
-                            [ Html.text "Attend" ] -- https://www.meetup.com/Code-Star-Night/events/242404035/
-                        , Button.render Mdl [1,1] model.mdl
-                            [ Button.ripple, Button.accent ]
-                            [ Html.text "Read more" ] -- https://www.meetup.com/Code-Star-Night/events/242404035/
+                        [ Button.render Mdl
+                            [ 1, 0 ]
+                            model.mdl
+                            [ Button.ripple
+                            , Button.raised
+                            , Button.colored
+                            , Button.link "https://www.meetup.com/Code-Star-Night/events/242404035/"
+                            ]
+                            [ Html.text "Attend" ]
+                        , Button.render Mdl
+                            [ 1, 1 ]
+                            model.mdl
+                            [ Button.ripple
+                            , Button.link "#events"
+                            ]
+                            [ Html.text "Read more" ]
+
+                        -- https://www.meetup.com/Code-Star-Night/events/242404035/
                         ]
                     ]
                 ]
@@ -121,31 +140,50 @@ viewLandingPage model =
         ]
 
 
-viewDummyPage : Model -> String -> Html Msg
-viewDummyPage model color =
+eventsPage : Model -> String -> Html Msg
+eventsPage model color =
     section
-        [ style
-            [ ( "text-align", "center" )
-            , ( "height", "100vh" )
-            , ( "display", "flex" )
-            , ( "align-items", "center" )
-            , ( "background-color", color )
-            ]
+        [ class "page events-page"
+        , id "events"
         ]
         [ grid []
-            [ cell [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
-                [ img
-                    [ src "img/codestar-logo.svg"
-                    , width 382
+            [ cell [ Material.Grid.offset Desktop 3, Material.Grid.offset Tablet 1, Material.Grid.size Desktop 6, Material.Grid.size Tablet 10 ]
+                [ iframe
+                    [ src "https://www.youtube.com/embed/LMtqXQkqTnM"
+                    , width 300
+                    , height 350
                     ]
                     []
-                , p [] [ Html.text "De mogelijkheden in de digitale wereld zijn eindeloos. Uitdagingen vaak complex. Wij ontwikkelen moderne software die simpel te gebruiken is. Agile en productief, met gebruik van de nieuwste technieken. Wij programmeren. Met ons hoofd én met ons hart. Voor organisaties die de volgende stap willen zetten." ]
-                , p [] [ Html.text "Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar." ]
+                , p [] [ Html.text "Codestar invites you to an evening with Andre Staltz, a renowned expert on reactive programming and author/contributor to frameworks like Cycle.js and RxJS. He will enlighten us with two brand new and unique talks about functional and reactive programming respectively, tailored to full-stack developers that have experience with working with reactive streams." ]
+                , h5 [] [ Html.text "Talk 1: OOP is dead only if FP is dead" ]
+                , p [] [ Html.text "If you are looking for the most epic of flame wars, look no further than the threads discussing the differences between object-oriented programming (OOP) and functional programming (FP). Especially proponents of functional programming are known for some pretty smug remarks:" ]
+                , p [] [ Html.text "'If you knew category theory, you'd get it!'" ]
+                , p [] [ Html.text "'Design patterns in Haskell? Hey everyone, look at the muggle try to get the wand to work!'" ]
+                , p [] [ Html.text "But is functional programming really in direct opposition to object-oriented programming? Although these two programming paradigms have important differences, they actually share a lot in common." ]
+                , p [] [ Html.text "In this talk, Andre will explore the gray area between OOP and FP, with code samples in JavaScript, TypeScript, and Haskell, kept easy enough for any programmer to follow and none of the smugness you’ll find online!" ]
+                , h5 [] [ Html.text "Talk 2: Live Coding - Two fundamental abstractions" ]
+                , p [] [ Html.text "Getters and setters are a natural abstraction in any programming environment. But a talk about those would hardly be interesting. Instead, we will take these familiar and fundamental concepts and take them to the next level. We will discuss how “getter getters” are useful, how “setter setters” are useful, and specially how 'setter setters' are just simple RxJS Observables." ]
+                , p [] [ Html.text "We will also learn how these “higher order” getters and setters can serve as building blocks for other abstractions when you are working with reactive streams (independent of the language you are working in). Come and find out how these exciting new insights might benefit your code!" ]
                 , Button.render Mdl
                     [ 0 ]
                     model.mdl
-                    [ Button.raised ]
-                    [ Html.text "Menu NYI" ]
+                    [ Button.ripple
+                    , Button.raised
+                    , Button.colored
+                    , Button.link "https://www.meetup.com/Code-Star-Night/events/242404035/"
+                    ]
+                    [ Html.text "Attend to meetup" ]
+                , h5 [] [ Html.text "BONUS: RxJS training 29th of September" ]
+                , p [] [ Html.text "If you still haven't got enough of functional and reactive programming after these two captivating talks, we invite you to join us for a Friday packed to the brim with reactive, functional, and André Staltz. Sign up below!" ]
+                , Button.render Mdl
+                    [ 0 ]
+                    model.mdl
+                    [ Button.ripple
+                    , Button.raised
+                    , Button.colored
+                    , Button.link "http://go.ordina.nl/l/83122/2017-08-14/7ykd4j#referrer=meetupcom"
+                    ]
+                    [ Html.text "Attend to training" ]
                 ]
             ]
         ]
@@ -163,7 +201,7 @@ viewJobsPage model =
             ]
         ]
         [ grid []
-            [ cell [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
+            [ cell [ Material.Grid.offset Desktop 3, Material.Grid.offset Tablet 1, Material.Grid.size Desktop 6, Material.Grid.size Tablet 10 ]
                 [ h2 [] [ Html.text "TIJD OM DE VOLGENDE STAP TE ZETTEN" ]
                 , p [] [ Html.text "IT is meer dan ooit de drager, bezorger en verrijker van je business. Zonder een excellente digitale infrastructuur loop je al snel achter. Data in overvloed, waar begin je? Als iemand je vroeger om water vroeg, pakte je een emmer en liep je naar de waterput. Tegenwoordig hebben we te maken met een waterval aan data. Succes met je emmer." ]
                 , p [] [ Html.text "Gelukkig is niet alleen de hoeveelheid data gegroeid maar ook de technieken om ermee te werken. Het moderne internet, mobiel gebruik en ‘Internet of Things’ vraagt om meer. Bijwerken wij met Scala, Frontend en BigData technologieën aan moderne software waarmee je uitdagingen niet meer uit de weg hoeft te gaan. Of je nu een grotere emmer, meer emmers of gewoon een fatsoenlijke waterleiding nodig hebt, wij kunnen het voor je maken." ]
@@ -184,7 +222,7 @@ viewDifferencePage model =
             ]
         ]
         [ grid []
-            [ cell [ Material.Grid.offset All 3, Material.Grid.size All 6 ]
+            [ cell [ Material.Grid.offset Desktop 3, Material.Grid.offset Tablet 1, Material.Grid.size Desktop 6, Material.Grid.size Tablet 10 ]
                 [ h2 [] [ Html.text "TIJD OM DE VOLGENDE STAP TE ZETTEN" ]
                 , p [] [ Html.text "IT is meer dan ooit de drager, bezorger en verrijker van je business. Zonder een excellente digitale infrastructuur loop je al snel achter. Data in overvloed, waar begin je? Als iemand je vroeger om water vroeg, pakte je een emmer en liep je naar de waterput. Tegenwoordig hebben we te maken met een waterval aan data. Succes met je emmer." ]
                 , p [] [ Html.text "Gelukkig is niet alleen de hoeveelheid data gegroeid maar ook de technieken om ermee te werken. Het moderne internet, mobiel gebruik en ‘Internet of Things’ vraagt om meer. Bijwerken wij met Scala, Frontend en BigData technologieën aan moderne software waarmee je uitdagingen niet meer uit de weg hoeft te gaan. Of je nu een grotere emmer, meer emmers of gewoon een fatsoenlijke waterleiding nodig hebt, wij kunnen het voor je maken." ]
