@@ -41,7 +41,7 @@ videoPlayerListStyle =
         , ( "height", "100%" )
         , ( "width", "40%" )
         , ( "float", "right" )
-        , ( "overflow", "hidden" )
+        , ( "overflowY", "auto" )
         ]
 
 

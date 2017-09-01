@@ -37,7 +37,6 @@ update msg model =
             ( { model | selectedVideoId = video.videoId }, Cmd.none )
 
 
-
 -- SUBSCRIPTIONS
 
 
