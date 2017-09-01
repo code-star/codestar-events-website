@@ -6,6 +6,7 @@ const less = require('gulp-less');
 const rename = require('gulp-rename');
 const merge = require('merge-stream');
 const cleanCSS = require('gulp-clean-css');
+const livereload = require('gulp-livereload');
 
 const APP_DIR = 'app/src';
 const OUTPUT_DIR = 'docs';
@@ -30,7 +31,8 @@ gulp.task('elm-init', elm.init);
 gulp.task('elm-bundle', ['elm-init'], function(){
     return gulp.src(APP_DIR+'/**/*.elm')
         .pipe(elm.bundle('main.js'))
-        .pipe(gulp.dest(JS_OUTPUT_DIR));
+        .pipe(gulp.dest(JS_OUTPUT_DIR))
+        .pipe(livereload())
 });
 
 gulp.task('buildCss', function () {
@@ -41,6 +43,7 @@ gulp.task('buildCss', function () {
         .pipe(rename('style.css'))
         .pipe(cleanCSS()) // minify css
         .pipe(gulp.dest(CSS_OUTPUT_DIR))
+        .pipe(livereload())
 });
 
 gulp.task('copyFiles', function () {
@@ -60,6 +63,7 @@ gulp.task('copyHtml', function () {
     return merge(
         gulp.src(APP_DIR+'/**/*.html')
             .pipe(gulp.dest(OUTPUT_DIR))
+            .pipe(livereload())
     )
 });
 
@@ -73,6 +77,10 @@ const allTasks = [
 gulp.task('default', allTasks);
 
 gulp.task('watch', allTasks, function() {
+    livereload.listen({
+        port: 35729,
+        host: 'localhost'
+    });
     gulp.watch(APP_DIR+'/**/*.elm', ['elm-bundle']);
     gulp.watch(LESS_ENTRY_POINT, ['buildCss']);
     gulp.watch(APP_DIR+'/**/*.html', ['copyHtml']);

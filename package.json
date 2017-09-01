@@ -33,6 +33,7 @@
     "gulp-clean-css": "3.7.0",
     "gulp-elm": "0.7.2",
     "gulp-less": "3.3.2",
+    "gulp-livereload": "3.8.1",
     "gulp-rename": "1.2.2",
     "gulp-size": "2.1.0",
     "merge-stream": "1.0.1",
