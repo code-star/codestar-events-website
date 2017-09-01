@@ -124,11 +124,13 @@ view model =
         ]
         [ viewGithubBanner
         , viewLandingPage model
---        , viewDummyPage model "green"
---        , viewDummyPage model "papayawhip"
+
+        --        , viewDummyPage model "green"
+        --        , viewDummyPage model "papayawhip"
         , viewDifferencePage model
         , viewJobsPage model
         ]
+
 
 viewLandingPage : Model -> Html Msg
 viewLandingPage model =
@@ -183,6 +185,7 @@ viewLandingPage model =
             ]
         ]
 
+
 viewDummyPage : Model -> String -> Html Msg
 viewDummyPage model color =
     section
@@ -216,10 +219,11 @@ viewDummyPage model color =
         ]
 
 
+
 --let colors = ['#030815','#041b36','#052d57','#073b72','#0c4d90','#1464af','#2b7ec5','#4e9bd5','#7bb9e5','#aad6f4'];
 --css.push('linear-gradient(to bottom, ' + colors[i] + ' 0%, ' + colors[i+1] + ' 100%)');
-
 -- background gradients: List of pages and List of tuples of start/end colors with map to results in List of pages with gradients
+
 
 viewJobsPage : Model -> Html Msg
 viewJobsPage model =
@@ -240,6 +244,7 @@ viewJobsPage model =
                 ]
             ]
         ]
+
 
 viewDifferencePage : Model -> Html Msg
 viewDifferencePage model =
