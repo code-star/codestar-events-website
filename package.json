@@ -8,7 +8,7 @@
     "format": "elm-format app/src/elm --yes",
     "format-validate": "elm-format app/src --validate",
     "build": "npm run format && gulp",
-    "watch": "npm-watch",
+    "watch": "gulp watch",
     "watch-alt": "node watch.js",
     "start": "npm run format && elm-reactor",
     "postinstall": "elm package install"

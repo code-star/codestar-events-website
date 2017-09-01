@@ -14,6 +14,11 @@ https://guide.elm-lang.org/install.html
 
 npm-watch does not work correctly on MacOS: https://github.com/M-Zuber/npm-watch/issues/35
 
+## Develop
+* run `npm run watch` to start Gulp with live reload
+* run `elm reactor` to start the developent server
+* go to [http://localhost:8000/debug/index.html](http://localhost:8000/debug/index.html)   
+
 
 ## Build
 
