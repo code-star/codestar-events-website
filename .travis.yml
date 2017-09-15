@@ -3,3 +3,12 @@ node_js:
 - 8.2.1
 before_install: npm install -g elm elm-format
 script: npm run build
+deploy:
+  # TEST
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+    target_branch: master
+    local_dir: docs
+    on:
+      branch: develop

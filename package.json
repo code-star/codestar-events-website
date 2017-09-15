@@ -8,6 +8,7 @@
     "format": "elm-format app/src --yes",
     "format-validate": "elm-format app/src --validate",
     "build": "npm run format && elm make app/src/Main.elm --output=docs/main.js",
+    "deploy": "elm make app/src/Main.elm --output=docs/main.js",
     "watch": "npm-watch",
     "watch-alt": "node watch.js",
     "start": "npm run format && elm-reactor",
