@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - 8.2.1
 before_install: npm install -g elm elm-format
-script: npm run deploy
+script: travis_wait 30 npm run deploy
 deploy:
   # TEST
   - provider: pages
