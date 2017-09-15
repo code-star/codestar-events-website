@@ -11,7 +11,7 @@
     "watch": "npm-watch",
     "watch-alt": "node watch.js",
     "start": "npm run format && elm-reactor",
-    "postinstall": "elm package install"
+    "postinstall": "elm package install --yes"
   },
   "watch": {
     "develop": "app/**/*.elm"
