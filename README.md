@@ -8,7 +8,7 @@ https://guide.elm-lang.org/install.html
 
 * nvm use 8.0.0
 * installation: `npm install`
-* set up symlink for debugging: `ln -s /docs/img /debug/img`
+* set up symlink for debugging: `ln -s docs/img debug/img`
 * run `npm run start`
 * go to http://localhost:8000/debug/index.html
 
