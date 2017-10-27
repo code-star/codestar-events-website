@@ -16512,7 +16512,14 @@ var _code_star$elm_codestar_website$Main$view = function (model) {
 							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text('Events & More'),
+								_0: A2(
+									_elm_lang$html$Html$a,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Events'),
+										_1: {ctor: '[]'}
+									}),
 								_1: {ctor: '[]'}
 							}),
 						_1: {
