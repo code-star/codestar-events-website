@@ -1,6 +1,7 @@
 module Main exposing (..)
 
 import Html
+import Http exposing (Request)
 import TwitterFeed.Rest exposing (..)
 import TwitterFeed.State exposing (..)
 import TwitterFeed.Types exposing (..)
@@ -21,7 +22,7 @@ main =
 
 init : ( Model, Cmd Msg )
 init =
-    ( initialModel, getTweets ( googleApiKey, youtubePlaylistId ) )
+    ( initialModel, getTweets )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -32,6 +33,13 @@ update msg model =
 
         NewTweets (Err _) ->
             ( { model | message = "Error while loading tweets!" }, Cmd.none )
+
+        NewToken (Ok token) ->
+            ( { model | message = "Got token" }, Cmd.none )
+
+        NewToken (Err _) ->
+            ( { model | message = "Error while getting token" }, Cmd.none )
+
 
 
 
