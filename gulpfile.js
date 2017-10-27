@@ -9,6 +9,7 @@ const cleanCSS = require('gulp-clean-css');
 const livereload = require('gulp-livereload');
 
 const APP_DIR = 'app/src';
+const DEBUG_DIR = 'debug';
 const OUTPUT_DIR = 'docs';
 const LESS_ENTRY_POINT = APP_DIR + '/less/style.less';
 
@@ -17,6 +18,7 @@ const IMG_OUTPUT_DIR = OUTPUT_DIR + '/img';
 const FONTS_OUTPUT_DIR = OUTPUT_DIR + '/fonts';
 const JS_OUTPUT_DIR = OUTPUT_DIR + '/js';
 
+const FONTS_DEBUG_DIR = DEBUG_DIR + '/fonts';
 
 gulp.task('clean', function () {
     return del([
@@ -54,6 +56,9 @@ gulp.task('copyFiles', function () {
         gulp.src(APP_DIR+'/fonts/**/*')
             .pipe(gulp.dest(FONTS_OUTPUT_DIR)),
 
+        gulp.src(APP_DIR+'/fonts/**/*')
+            .pipe(gulp.dest(FONTS_DEBUG_DIR)),
+
         gulp.src(APP_DIR+'/img/**/*')
             .pipe(gulp.dest(IMG_OUTPUT_DIR))
     )
@@ -82,7 +87,8 @@ gulp.task('watch', allTasks, function() {
         host: 'localhost'
     });
     gulp.watch(APP_DIR+'/**/*.elm', ['elm-bundle']);
-    gulp.watch(LESS_ENTRY_POINT, ['buildCss']);
+    //gulp.watch(LESS_ENTRY_POINT, ['buildCss']);
+    gulp.watch(APP_DIR+'/**/*.less', ['buildCss']);
     gulp.watch(APP_DIR+'/**/*.html', ['copyHtml']);
 });
 
