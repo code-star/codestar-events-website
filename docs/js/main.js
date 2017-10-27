@@ -16495,7 +16495,7 @@ var _code_star$elm_codestar_website$Main$view = function (model) {
 								_elm_lang$html$Html$img,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$src('img/codestar-logo.svg'),
+									_0: _elm_lang$html$Html_Attributes$src('img/codestar-logo-notext.svg'),
 									_1: {
 										ctor: '::',
 										_0: _elm_lang$html$Html_Attributes$class('logo'),
@@ -16518,22 +16518,66 @@ var _code_star$elm_codestar_website$Main$view = function (model) {
 						_1: {
 							ctor: '::',
 							_0: A2(
-								_elm_lang$html$Html$a,
+								_elm_lang$html$Html$h2,
+								{ctor: '[]'},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$href('https://www.codestar.nl/#join'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('jobs-link'),
-										_1: {ctor: '[]'}
-									}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('We\'re hiring!'),
+									_0: _elm_lang$html$Html$text('Photos'),
 									_1: {ctor: '[]'}
 								}),
-							_1: {ctor: '[]'}
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$h2,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Articles'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$h2,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('About'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$h2,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('[Social Media icons]'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$a,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$href('https://www.codestar.nl/#join'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('jobs-link'),
+														_1: {ctor: '[]'}
+													}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('We\'re hiring!'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
 						}
 					}
 				}),

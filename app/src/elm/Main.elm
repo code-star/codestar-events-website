@@ -73,12 +73,16 @@ view model =
             [ class "header" ]
             [ a [ href "https://www.codestar.nl/" ]
                 [ img
-                    [ src "img/codestar-logo.svg"
+                    [ src "img/codestar-logo-notext.svg"
                     , class "logo"
                     ]
                     []
                 ]
             , h2 [] [ Html.text "Events & More" ]
+            , h2 [] [ Html.text "Photos" ]
+            , h2 [] [ Html.text "Articles" ]
+            , h2 [] [ Html.text "About" ]
+            , h2 [] [ Html.text "[Social Media icons]" ]
             , a [ href "https://www.codestar.nl/#join", class "jobs-link" ]
                 [ Html.text "We're hiring!" ]
             ]
