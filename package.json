@@ -37,6 +37,7 @@
     "elm-format": "^0.7.0-exp"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "cors-anywhere": "0.4.0"
   }
 }

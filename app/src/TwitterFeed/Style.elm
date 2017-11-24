@@ -12,6 +12,7 @@ twitterFeedStyle =
         , ( "borderBottom", "1px solid #eee" )
         ]
 
+
 feedErrorStyle : Attribute msg
 feedErrorStyle =
     style

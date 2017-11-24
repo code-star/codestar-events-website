@@ -37,3 +37,8 @@ Please run [elm-format](https://github.com/avh4/elm-format) on all your code bef
 Set up according to editor specific guide on https://github.com/avh4/elm-format
 
 If it works well, it can be added to `npm run start`, e.g. with `"start": "npm run format && concurrently --kill-others \"http-server docs\" \"npm run watch\""`
+
+
+
+## Generating key
+`openssl base64 -in key -out encodedKey`

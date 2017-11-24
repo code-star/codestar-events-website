@@ -46,5 +46,9 @@ view model =
         [ div [ class "tweet-list" ]
             [ renderTweets model.tweets ]
         , div [ feedErrorStyle ]
-            [ text model.message ]
+            [ text model.message
+            , br [][]
+            , br [][]
+            , text model.authToken
+            ]
         ]

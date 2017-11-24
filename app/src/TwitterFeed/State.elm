@@ -6,19 +6,22 @@ import TwitterFeed.Types exposing (..)
 
 type Msg
     = NewTweets (Result Http.Error (List Tweet))
-    | NewToken (Result Http.Error (String))
+
 
 twitterOAuthTokenUrl : String
 twitterOAuthTokenUrl =
     "https://api.twitter.com/oauth2/token"
 
+
 twitterApiKey : String
 twitterApiKey =
     "LugliFfgdwkNQWyv3miN2HQDl"
 
+
 twitterApiSecret : String
 twitterApiSecret =
     "k6YGB4f7FQnQFghf4u4yOXazEerpPQIrzCWe9b554Mo92ACNer"
+
 
 encodedBearerToken : String
 encodedBearerToken =
@@ -32,12 +35,13 @@ maxVideoDescriptionLength =
 
 initialModel : Model
 initialModel =
-    { message = "Please select a video!"
+    { message = "Trying to load tweets..."
+    , authToken = "<not set>"
     , tweets =
         [ { title = "test title"
           , text = "test text"
-          },
-          { title = "test title 2"
+          }
+        , { title = "test title 2"
           , text = "test text 2"
           }
         ]

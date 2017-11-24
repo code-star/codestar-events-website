@@ -3,6 +3,7 @@ module TwitterFeed.Types exposing (..)
 
 type alias Model =
     { message : String
+    , authToken : String
     , tweets : List Tweet
     }
 

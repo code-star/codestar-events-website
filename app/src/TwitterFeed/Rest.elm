@@ -3,25 +3,36 @@ module TwitterFeed.Rest exposing (..)
 import Http exposing (Body, Header, Request, expectJson, header, stringBody)
 import Json.Decode exposing (Decoder, bool, field, int, map2, oneOf, string, succeed)
 import Json.Encode
+import Task exposing(Task)
 import TwitterFeed.State exposing (..)
 import TwitterFeed.Types exposing (..)
 
+
 -- note: request to twitter is blocked because of coc reasons. you need to do it via a server side app
-headers : List Header
-headers =
+
+
+authHeaders : List Header
+authHeaders =
     [ header "Authorization" ("Basic " ++ encodedBearerToken)
+    , header "Content-Type" "application/x-www-form-urlencoded;charset=UTF-8" ]
+
+userTimelineHeaders : String -> List Header
+userTimelineHeaders authToken =
+    [ header "Authorization" ("Bearer " ++ authToken)
     , header "Content-Type" "application/x-www-form-urlencoded;charset=UTF-8" ]
 
 method : String
 method =
     "POST"
 
+
 body : String
 body =
     "grant_type=client_credentials"
 
-makeRequest : String -> String -> Body -> Decoder a -> Request a
-makeRequest method url body resultDecoder =
+
+makeRequest : String -> String -> List Header -> Body -> Decoder a -> Request a
+makeRequest method url headers body resultDecoder =
     Http.request
         { method = method
         , headers = headers
@@ -29,30 +40,46 @@ makeRequest method url body resultDecoder =
         , body = body
         , expect = expectJson resultDecoder
         , timeout = Nothing
-        , withCredentials = True
+        , withCredentials = False
         }
 
-getTweets : Cmd Msg
-getTweets =
+getAuthToken : Task Http.Error String
+getAuthToken =
     let
         body = "grant_type=client_credentials"
             |> Http.stringBody "application/x-www-form-urlencoded"
-        post = makeRequest "POST" "https://api.twitter.com/oauth2/token" body tokenDecoder
+        post = makeRequest "POST" "http://localhost:8080/https://api.twitter.com/oauth2/token" authHeaders body tokenDecoder
       in
-        Http.send NewToken post
+        post
+            |> Http.toTask
+
+getUserTimeline : String -> Task Http.Error (List Tweet)
+getUserTimeline authToken =
+    let
+        body = "" |> Http.stringBody "application/x-www-form-urlencoded"
+        post = makeRequest "GET" "http://localhost:8080/https://api.twitter.com/1.1/statuses/user_timeline.json?count=15&screen_name=Codestar_nl" ( userTimelineHeaders authToken ) body tweetsDecoder
+      in
+        post
+            |> Http.toTask
+
+fetchTweets : Task Http.Error (List Tweet)
+fetchTweets =
+    getAuthToken
+        |> Task.andThen (\token -> getUserTimeline token)
 
 
 tokenDecoder : Decoder String
 tokenDecoder =
     field "access_token" Json.Decode.string
 
+
 tweetsDecoder : Decoder (List Tweet)
 tweetsDecoder =
-    field "items" (Json.Decode.list tweetDecoder)
+    Json.Decode.list tweetDecoder
 
 
 tweetDecoder : Decoder Tweet
 tweetDecoder =
     Json.Decode.map2 Tweet
-        (field "snippet" Json.Decode.string)
-        (field "snippet" Json.Decode.string)
+        (field "user" (field "name" Json.Decode.string))
+        (field "text" Json.Decode.string)
