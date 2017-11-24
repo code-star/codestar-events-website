@@ -1,7 +1,7 @@
 module TwitterFeed.Rest exposing (..)
 
 import Http exposing (Body, Header, Request, expectJson, header, stringBody)
-import Json.Decode exposing (Decoder, bool, field, int, map2, oneOf, string, succeed)
+import Json.Decode exposing (Decoder, at, bool, field, int, map7, oneOf, string, succeed)
 import Json.Encode
 import Task exposing(Task)
 import TwitterFeed.State exposing (..)
@@ -80,6 +80,12 @@ tweetsDecoder =
 
 tweetDecoder : Decoder Tweet
 tweetDecoder =
-    Json.Decode.map2 Tweet
-        (field "user" (field "name" Json.Decode.string))
-        (field "text" Json.Decode.string)
+    Json.Decode.map7 Tweet
+        (at ["user","name"] Json.Decode.string)
+        (at ["user","screen_name"] Json.Decode.string)
+        (at ["text"] Json.Decode.string)
+        (at ["user","profile_image_url"] Json.Decode.string)
+        (Json.Decode.maybe <| Json.Decode.field "retweeted_status" (at ["user","profile_image_url"] Json.Decode.string))
+        (Json.Decode.maybe <| Json.Decode.field "retweeted_status" (at ["user","name"] Json.Decode.string))
+        (at ["created_at"] Json.Decode.string)
+

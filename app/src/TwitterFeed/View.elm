@@ -1,6 +1,6 @@
 module TwitterFeed.View exposing (..)
 
-import Html exposing (Attribute, Html, br, div, iframe, input, program, section, text)
+import Html exposing (Attribute, Html, br, div, iframe, input, program, section, text, img, h4, p)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import TwitterFeed.State exposing (..)
@@ -8,21 +8,44 @@ import TwitterFeed.Style exposing (..)
 import TwitterFeed.Types exposing (..)
 
 
+tweetImageUrl : Tweet -> String
+tweetImageUrl tweet =
+    case tweet.retweetImgUrl of
+      Nothing ->
+        tweet.imgUrl
+      Just val ->
+        val
+
+tweetUser : Tweet -> String
+tweetUser tweet =
+    case tweet.retweetUsername of
+      Nothing ->
+        tweet.userName
+      Just val ->
+        val
+
 renderTweet : Tweet -> Html Msg
-renderTweet v =
+renderTweet tweet =
     div
-        [ class "twitter-feed-item"
-        , twitterFeedStyle
-        ]
+        [ twitterFeedStyle ]
         [ div
-            [ class "twitter-feed-item-title"
-            ]
-            [ text v.title
+            [ twitterFeedImgWrapperStyle ]
+            [ img
+              [ src (tweetImageUrl tweet)
+              , twitterFeedImgStyle
+              ] []
             ]
         , div
-            [ class "twitter-feed-item-text"
-            ]
-            [ text v.text
+            [  ]
+            [ h4
+                [ ]
+                [ text (tweetUser tweet) ]
+            , p
+              [ tweetTimeStyle ]
+              [ text tweet.createdAt ]
+            , p
+              [ ]
+              [ text tweet.text ]
             ]
         ]
 
@@ -46,9 +69,5 @@ view model =
         [ div [ class "tweet-list" ]
             [ renderTweets model.tweets ]
         , div [ feedErrorStyle ]
-            [ text model.message
-            , br [][]
-            , br [][]
-            , text model.authToken
-            ]
+            [ text model.message ]
         ]

@@ -34,10 +34,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         NewTweets (Ok tweets) ->
-            ( { model | tweets = tweets }, Cmd.none )
+            ( { model | tweets = tweets, message = "" }, Cmd.none )
 
         NewTweets (Err _) ->
-            ( { model | message = "Error while loading tweets!" }, Cmd.none )
+            ( { model | message = "Error while fetching tweets!" }, Cmd.none )
 
 -- SUBSCRIPTIONS
 

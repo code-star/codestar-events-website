@@ -35,14 +35,6 @@ maxVideoDescriptionLength =
 
 initialModel : Model
 initialModel =
-    { message = "Trying to load tweets..."
-    , authToken = "<not set>"
-    , tweets =
-        [ { title = "test title"
-          , text = "test text"
-          }
-        , { title = "test title 2"
-          , text = "test text 2"
-          }
-        ]
+    { message = "Fetching tweets..."
+    , tweets = []
     }

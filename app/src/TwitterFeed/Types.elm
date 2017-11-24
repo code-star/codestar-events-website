@@ -3,12 +3,16 @@ module TwitterFeed.Types exposing (..)
 
 type alias Model =
     { message : String
-    , authToken : String
     , tweets : List Tweet
     }
 
 
 type alias Tweet =
-    { title : String
+    { userName : String
+    , screenName : String
     , text : String
+    , imgUrl : String
+    , retweetImgUrl : (Maybe String)
+    , retweetUsername : (Maybe String)
+    , createdAt : String
     }
