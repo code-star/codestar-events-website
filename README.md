@@ -16,7 +16,7 @@ npm-watch does not work correctly on MacOS: https://github.com/M-Zuber/npm-watch
 
 ## Develop
 * run `npm run watch` to start Gulp with live reload
-* run `elm reactor` to start the developent server
+* run `elm reactor` to start the development server
 * go to [http://localhost:8000/debug/index.html](http://localhost:8000/debug/index.html)   
 
 
