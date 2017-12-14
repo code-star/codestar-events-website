@@ -11,7 +11,7 @@ import Material.Color as Color
 import Material.Grid exposing (Device(..), cell, grid, size)
 import Material.Menu as Menu exposing (render)
 import Material.Options as Options exposing (Style, cs, css)
-import Msg as Main exposing (..)
+import Elm.Msg as Main exposing (..)
 
 
 -- MAIN
