@@ -73,7 +73,7 @@ view model =
             [ class "header" ]
             [ a [ href "https://www.codestar.nl/" ]
                 [ img
-                    [ src "img/codestar-logo-notext.svg"
+                    [ src "codestar-logo-notext.svg"
                     , class "logo"
                     ]
                     []

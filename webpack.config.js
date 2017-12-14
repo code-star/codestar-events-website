@@ -8,7 +8,7 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve(__dirname + '/dist'),
+        path: path.resolve(__dirname + '/docs'),
         filename: '[name].js'
     },
 
@@ -40,10 +40,10 @@ module.exports = {
                 test: /\.(woff(2)?|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'url-loader?limit=10000&mimetype=application/font-woff',
             },
-            {
-                test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: 'file-loader',
-            },
+            // {
+            //     test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            //     loader: 'file-loader',
+            // },
         ],
 
         noParse: /\.elm$/,
