@@ -10,6 +10,7 @@ https://guide.elm-lang.org/install.html
 * installation: `npm install`
 * set up symlink for debugging: `ln -s /docs/img /debug/img` (use absolute paths in MacOS)
 * run `npm run start`
+* in another terminal, run `node scripts/server.js` (proxy for Twitter)
 * go to http://localhost:8000/debug/index.html
 
 npm-watch does not work correctly on MacOS: https://github.com/M-Zuber/npm-watch/issues/35
