@@ -29,8 +29,8 @@ toVideoItem v =
 
 
 renderVideos : List VideoItem -> Html Msg
-renderVideos video =
-    div [] (List.map toVideoItem video)
+renderVideos videos =
+    div [] (List.map toVideoItem videos)
 
 
 renderVideo : String -> Html msg
@@ -38,7 +38,8 @@ renderVideo videoId =
     iframe
         [ src ("https://www.youtube.com/embed/" ++ videoId ++ "?controls=2&amp;showinfo=true&amp;rel=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.codestar.nl&amp;widgetid=1")
         , videoPlayerVideoIframeStyle
-        ] []
+        ]
+        []
 
 
 sliceText : String -> Int -> String
