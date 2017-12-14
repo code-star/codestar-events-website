@@ -8145,55 +8145,6 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
-var _code_star$elm_codestar_website$GithubBanner_View$viewGithubBanner = A2(
-	_elm_lang$html$Html$a,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$href('https://github.com/code-star/elm-codestar-website'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$img,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$src('https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67'),
-				_1: {
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$style(
-						{
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'right', _1: '0'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '0'},
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$alt('Fork me on GitHub'),
-						_1: {
-							ctor: '::',
-							_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-canonical-src', 'https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'),
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			},
-			{ctor: '[]'}),
-		_1: {ctor: '[]'}
-	});
-
 var _elm_lang$html$Html_Events$keyCode = A2(_elm_lang$core$Json_Decode$field, 'keyCode', _elm_lang$core$Json_Decode$int);
 var _elm_lang$html$Html_Events$targetChecked = A2(
 	_elm_lang$core$Json_Decode$at,
@@ -14932,6 +14883,784 @@ var _debois$elm_mdl$Material$Model = F8(
 		return {button: a, textfield: b, menu: c, snackbar: d, layout: e, toggles: f, tooltip: g, tabs: h};
 	});
 
+var _debois$elm_mdl$Material_Card$stopClick = _debois$elm_mdl$Material_Options_Internal$attribute(
+	A2(_elm_lang$html$Html_Attributes$attribute, 'onclick', 'var event = arguments[0] || window.event; event.stopPropagation();'));
+var _debois$elm_mdl$Material_Card$block = function (block) {
+	var _p0 = block;
+	switch (_p0.ctor) {
+		case 'Title':
+			return A2(
+				_debois$elm_mdl$Material_Options$div,
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-card__title'),
+					_1: _p0._0
+				},
+				_p0._1);
+		case 'Media':
+			return A2(
+				_debois$elm_mdl$Material_Options$div,
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-card__media'),
+					_1: _p0._0
+				},
+				_p0._1);
+		case 'SupportingText':
+			return A2(
+				_debois$elm_mdl$Material_Options$div,
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-card__supporting-text'),
+					_1: _p0._0
+				},
+				_p0._1);
+		case 'Actions':
+			return A2(
+				_debois$elm_mdl$Material_Options$div,
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-card__actions'),
+					_1: {ctor: '::', _0: _debois$elm_mdl$Material_Card$stopClick, _1: _p0._0}
+				},
+				_p0._1);
+		default:
+			return A2(
+				_debois$elm_mdl$Material_Options$div,
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-card__menu'),
+					_1: {ctor: '::', _0: _debois$elm_mdl$Material_Card$stopClick, _1: _p0._0}
+				},
+				_p0._1);
+	}
+};
+var _debois$elm_mdl$Material_Card$view = F2(
+	function (styling, views) {
+		return A2(
+			_debois$elm_mdl$Material_Options$div,
+			{
+				ctor: '::',
+				_0: _debois$elm_mdl$Material_Options$many(styling),
+				_1: {
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-card'),
+					_1: {
+						ctor: '::',
+						_0: A2(_debois$elm_mdl$Material_Options$css, 'min-height', '0px'),
+						_1: {ctor: '[]'}
+					}
+				}
+			},
+			A2(_elm_lang$core$List$map, _debois$elm_mdl$Material_Card$block, views));
+	});
+var _debois$elm_mdl$Material_Card$subhead = function (styling) {
+	return _debois$elm_mdl$Material_Options$span(
+		{
+			ctor: '::',
+			_0: _debois$elm_mdl$Material_Options$cs('mdl-card__subtitle-text'),
+			_1: {
+				ctor: '::',
+				_0: A2(_debois$elm_mdl$Material_Options$css, 'padding-top', '8px'),
+				_1: styling
+			}
+		});
+};
+var _debois$elm_mdl$Material_Card$head = function (styling) {
+	return A2(
+		_debois$elm_mdl$Material_Options$styled,
+		_elm_lang$html$Html$h1,
+		{
+			ctor: '::',
+			_0: _debois$elm_mdl$Material_Options$cs('mdl-card__title-text'),
+			_1: {
+				ctor: '::',
+				_0: A2(_debois$elm_mdl$Material_Options$css, 'align-self', 'flex-start'),
+				_1: styling
+			}
+		});
+};
+var _debois$elm_mdl$Material_Card$expand = _debois$elm_mdl$Material_Options$cs('mdl-card--expand');
+var _debois$elm_mdl$Material_Card$border = _debois$elm_mdl$Material_Options$cs('mdl-card--border');
+var _debois$elm_mdl$Material_Card$Actions = F2(
+	function (a, b) {
+		return {ctor: 'Actions', _0: a, _1: b};
+	});
+var _debois$elm_mdl$Material_Card$actions = _debois$elm_mdl$Material_Card$Actions;
+var _debois$elm_mdl$Material_Card$SupportingText = F2(
+	function (a, b) {
+		return {ctor: 'SupportingText', _0: a, _1: b};
+	});
+var _debois$elm_mdl$Material_Card$text = _debois$elm_mdl$Material_Card$SupportingText;
+var _debois$elm_mdl$Material_Card$Media = F2(
+	function (a, b) {
+		return {ctor: 'Media', _0: a, _1: b};
+	});
+var _debois$elm_mdl$Material_Card$media = _debois$elm_mdl$Material_Card$Media;
+var _debois$elm_mdl$Material_Card$Menu = F2(
+	function (a, b) {
+		return {ctor: 'Menu', _0: a, _1: b};
+	});
+var _debois$elm_mdl$Material_Card$menu = F2(
+	function (styling, block) {
+		return A2(_debois$elm_mdl$Material_Card$Menu, styling, block);
+	});
+var _debois$elm_mdl$Material_Card$Title = F2(
+	function (a, b) {
+		return {ctor: 'Title', _0: a, _1: b};
+	});
+var _debois$elm_mdl$Material_Card$title = F2(
+	function (styling, block) {
+		return A2(
+			_debois$elm_mdl$Material_Card$Title,
+			{
+				ctor: '::',
+				_0: _debois$elm_mdl$Material_Options$many(styling),
+				_1: {
+					ctor: '::',
+					_0: A2(_debois$elm_mdl$Material_Options$css, 'justify-content', 'flex-end'),
+					_1: {
+						ctor: '::',
+						_0: A2(_debois$elm_mdl$Material_Options$css, 'flex-direction', 'column'),
+						_1: {
+							ctor: '::',
+							_0: A2(_debois$elm_mdl$Material_Options$css, 'align-items', 'flex-start'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			},
+			block);
+	});
+
+var _debois$elm_mdl$Material_Chip$hasValue = function (m) {
+	var _p0 = m;
+	if (_p0.ctor === 'Just') {
+		return true;
+	} else {
+		return false;
+	}
+};
+var _debois$elm_mdl$Material_Chip$renderItem = function (item) {
+	var _p1 = item;
+	switch (_p1.ctor) {
+		case 'Contact':
+			return A3(
+				_debois$elm_mdl$Material_Options$styled,
+				_p1._0,
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-chip__contact'),
+					_1: _p1._1
+				},
+				_p1._2);
+		case 'Text':
+			return A3(
+				_debois$elm_mdl$Material_Options$styled,
+				_elm_lang$html$Html$span,
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-chip__text'),
+					_1: _p1._0
+				},
+				_p1._1);
+		default:
+			return A3(
+				_debois$elm_mdl$Material_Options$styled,
+				_p1._0,
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-chip__action'),
+					_1: _p1._1
+				},
+				_p1._2);
+	}
+};
+var _debois$elm_mdl$Material_Chip$priority = function (item) {
+	var _p2 = item;
+	switch (_p2.ctor) {
+		case 'Contact':
+			return 0;
+		case 'Text':
+			return 1;
+		default:
+			return 2;
+	}
+};
+var _debois$elm_mdl$Material_Chip$deleteClick = function (msg) {
+	return A3(
+		_debois$elm_mdl$Material_Options$onWithOptions,
+		'click',
+		{stopPropagation: true, preventDefault: true},
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _debois$elm_mdl$Material_Chip$deleteLink = function (_p3) {
+	return _debois$elm_mdl$Material_Options_Internal$option(
+		F2(
+			function (link, config) {
+				return _elm_lang$core$Native_Utils.update(
+					config,
+					{
+						deleteLink: _elm_lang$core$Maybe$Just(
+							_elm_lang$html$Html_Attributes$href(link))
+					});
+			})(_p3));
+};
+var _debois$elm_mdl$Material_Chip$deleteIcon = function (_p4) {
+	return _debois$elm_mdl$Material_Options_Internal$option(
+		F2(
+			function (icon, config) {
+				return _elm_lang$core$Native_Utils.update(
+					config,
+					{
+						deleteIcon: _elm_lang$core$Maybe$Just(icon)
+					});
+			})(_p4));
+};
+var _debois$elm_mdl$Material_Chip$defaultConfig = {deleteIcon: _elm_lang$core$Maybe$Nothing, deleteLink: _elm_lang$core$Maybe$Nothing, deleteClick: _elm_lang$core$Maybe$Nothing};
+var _debois$elm_mdl$Material_Chip$Config = F3(
+	function (a, b, c) {
+		return {deleteIcon: a, deleteLink: b, deleteClick: c};
+	});
+var _debois$elm_mdl$Material_Chip$Action = F3(
+	function (a, b, c) {
+		return {ctor: 'Action', _0: a, _1: b, _2: c};
+	});
+var _debois$elm_mdl$Material_Chip$action = _debois$elm_mdl$Material_Chip$Action;
+var _debois$elm_mdl$Material_Chip$getActionElement = function (config) {
+	var click = function () {
+		var _p5 = config.deleteClick;
+		if (_p5.ctor === 'Just') {
+			return _debois$elm_mdl$Material_Options_Internal$attribute(_p5._0);
+		} else {
+			return _debois$elm_mdl$Material_Options$nop;
+		}
+	}();
+	var link = function () {
+		var _p6 = config.deleteLink;
+		if (_p6.ctor === 'Just') {
+			return _debois$elm_mdl$Material_Options_Internal$attribute(_p6._0);
+		} else {
+			return _debois$elm_mdl$Material_Options$nop;
+		}
+	}();
+	var hasClick = _debois$elm_mdl$Material_Chip$hasValue(config.deleteClick);
+	var hasLink = _debois$elm_mdl$Material_Chip$hasValue(config.deleteLink);
+	var actionElement = hasLink ? _elm_lang$html$Html$a : _elm_lang$html$Html$span;
+	var hasIcon = _debois$elm_mdl$Material_Chip$hasValue(config.deleteIcon);
+	var icon = hasIcon ? A2(_elm_lang$core$Maybe$withDefault, '', config.deleteIcon) : ((hasLink || hasClick) ? A2(_elm_lang$core$Maybe$withDefault, 'cancel', config.deleteIcon) : '');
+	var isDeletable = hasIcon || (hasLink || hasClick);
+	return isDeletable ? _elm_lang$core$Maybe$Just(
+		A3(
+			_debois$elm_mdl$Material_Chip$action,
+			actionElement,
+			{
+				ctor: '::',
+				_0: link,
+				_1: {
+					ctor: '::',
+					_0: click,
+					_1: {ctor: '[]'}
+				}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_debois$elm_mdl$Material_Icon$view,
+					icon,
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			})) : _elm_lang$core$Maybe$Nothing;
+};
+var _debois$elm_mdl$Material_Chip$chip = F3(
+	function (element, props, items) {
+		var isContact = A2(
+			_elm_lang$core$List$any,
+			function (x) {
+				return _elm_lang$core$Native_Utils.eq(
+					_debois$elm_mdl$Material_Chip$priority(x),
+					0);
+			},
+			items);
+		var summary = A2(_debois$elm_mdl$Material_Options_Internal$collect, _debois$elm_mdl$Material_Chip$defaultConfig, props);
+		var config = summary.config;
+		var action = _debois$elm_mdl$Material_Chip$getActionElement(config);
+		var isDeletable = _debois$elm_mdl$Material_Chip$hasValue(action);
+		var withIcon = A2(
+			_elm_lang$core$Basics_ops['++'],
+			function () {
+				var _p7 = action;
+				if (_p7.ctor === 'Just') {
+					return {
+						ctor: '::',
+						_0: _p7._0,
+						_1: {ctor: '[]'}
+					};
+				} else {
+					return {ctor: '[]'};
+				}
+			}(),
+			items);
+		var content = A2(
+			_elm_lang$core$List$map,
+			_debois$elm_mdl$Material_Chip$renderItem,
+			A2(_elm_lang$core$List$sortBy, _debois$elm_mdl$Material_Chip$priority, withIcon));
+		return A3(
+			_debois$elm_mdl$Material_Options$styled,
+			element,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				{
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Options$cs('mdl-chip'),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_debois$elm_mdl$Material_Options$when,
+							isContact,
+							_debois$elm_mdl$Material_Options$cs('mdl-chip--contact')),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_debois$elm_mdl$Material_Options$when,
+								isDeletable,
+								_debois$elm_mdl$Material_Options$cs('mdl-chip--deletable')),
+							_1: {
+								ctor: '::',
+								_0: _debois$elm_mdl$Material_Options_Internal$attribute(
+									_debois$elm_mdl$Material_Helpers$blurOn('mouseup')),
+								_1: {
+									ctor: '::',
+									_0: _debois$elm_mdl$Material_Options_Internal$attribute(
+										_debois$elm_mdl$Material_Helpers$blurOn('mouseleave')),
+									_1: {
+										ctor: '::',
+										_0: _debois$elm_mdl$Material_Options_Internal$attribute(
+											_debois$elm_mdl$Material_Helpers$blurOn('touchend')),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				props),
+			content);
+	});
+var _debois$elm_mdl$Material_Chip$button = function (props) {
+	return A2(
+		_debois$elm_mdl$Material_Chip$chip,
+		_elm_lang$html$Html$button,
+		{
+			ctor: '::',
+			_0: _debois$elm_mdl$Material_Options_Internal$attribute(
+				_elm_lang$html$Html_Attributes$type_('button')),
+			_1: props
+		});
+};
+var _debois$elm_mdl$Material_Chip$span = _debois$elm_mdl$Material_Chip$chip(_elm_lang$html$Html$span);
+var _debois$elm_mdl$Material_Chip$Text = F2(
+	function (a, b) {
+		return {ctor: 'Text', _0: a, _1: b};
+	});
+var _debois$elm_mdl$Material_Chip$content = _debois$elm_mdl$Material_Chip$Text;
+var _debois$elm_mdl$Material_Chip$text = F2(
+	function (props, txt) {
+		return A2(
+			_debois$elm_mdl$Material_Chip$Text,
+			props,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(txt),
+				_1: {ctor: '[]'}
+			});
+	});
+var _debois$elm_mdl$Material_Chip$Contact = F3(
+	function (a, b, c) {
+		return {ctor: 'Contact', _0: a, _1: b, _2: c};
+	});
+var _debois$elm_mdl$Material_Chip$contact = _debois$elm_mdl$Material_Chip$Contact;
+
+var _debois$elm_mdl$Material_Color$text = function (_p0) {
+	var _p1 = _p0;
+	return _debois$elm_mdl$Material_Options$cs(
+		A2(_elm_lang$core$Basics_ops['++'], 'mdl-color-text--', _p1._0));
+};
+var _debois$elm_mdl$Material_Color$background = function (_p2) {
+	var _p3 = _p2;
+	return _debois$elm_mdl$Material_Options$cs(
+		A2(_elm_lang$core$Basics_ops['++'], 'mdl-color--', _p3._0));
+};
+var _debois$elm_mdl$Material_Color$shadeName = function (shade) {
+	var _p4 = shade;
+	switch (_p4.ctor) {
+		case 'S50':
+			return '50';
+		case 'S100':
+			return '100';
+		case 'S200':
+			return '200';
+		case 'S300':
+			return '300';
+		case 'S400':
+			return '400';
+		case 'S500':
+			return '500';
+		case 'S600':
+			return '600';
+		case 'S700':
+			return '700';
+		case 'S800':
+			return '800';
+		case 'S900':
+			return '900';
+		case 'A100':
+			return 'A100';
+		case 'A200':
+			return 'A200';
+		case 'A400':
+			return 'A400';
+		default:
+			return 'A700';
+	}
+};
+var _debois$elm_mdl$Material_Color$hueName = function (color) {
+	var _p5 = color;
+	switch (_p5.ctor) {
+		case 'Indigo':
+			return 'indigo';
+		case 'Blue':
+			return 'blue';
+		case 'LightBlue':
+			return 'light-blue';
+		case 'Cyan':
+			return 'cyan';
+		case 'Teal':
+			return 'teal';
+		case 'Green':
+			return 'green';
+		case 'LightGreen':
+			return 'light-green';
+		case 'Lime':
+			return 'lime';
+		case 'Yellow':
+			return 'yellow';
+		case 'Amber':
+			return 'amber';
+		case 'Orange':
+			return 'orange';
+		case 'Brown':
+			return 'brown';
+		case 'BlueGrey':
+			return 'blue-grey';
+		case 'Grey':
+			return 'grey';
+		case 'DeepOrange':
+			return 'deep-orange';
+		case 'Red':
+			return 'red';
+		case 'Pink':
+			return 'pink';
+		case 'Purple':
+			return 'purple';
+		default:
+			return 'deep-purple';
+	}
+};
+var _debois$elm_mdl$Material_Color$scheme = F2(
+	function (primary, accent) {
+		var q = _elm_lang$core$String$map(
+			function (x) {
+				return _elm_lang$core$Native_Utils.eq(
+					x,
+					_elm_lang$core$Native_Utils.chr('-')) ? _elm_lang$core$Native_Utils.chr('_') : x;
+			});
+		var cssFile = function () {
+			var _p6 = accent;
+			switch (_p6.ctor) {
+				case 'Grey':
+					return '';
+				case 'Brown':
+					return '';
+				case 'BlueGrey':
+					return '';
+				default:
+					return A2(
+						_elm_lang$core$Basics_ops['++'],
+						'.',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							q(
+								_debois$elm_mdl$Material_Color$hueName(primary)),
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								'-',
+								q(
+									_debois$elm_mdl$Material_Color$hueName(accent)))));
+			}
+		}();
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			'material',
+			A2(_elm_lang$core$Basics_ops['++'], cssFile, '.min.css'));
+	});
+var _debois$elm_mdl$Material_Color$DeepPurple = {ctor: 'DeepPurple'};
+var _debois$elm_mdl$Material_Color$Purple = {ctor: 'Purple'};
+var _debois$elm_mdl$Material_Color$Pink = {ctor: 'Pink'};
+var _debois$elm_mdl$Material_Color$Red = {ctor: 'Red'};
+var _debois$elm_mdl$Material_Color$DeepOrange = {ctor: 'DeepOrange'};
+var _debois$elm_mdl$Material_Color$Grey = {ctor: 'Grey'};
+var _debois$elm_mdl$Material_Color$BlueGrey = {ctor: 'BlueGrey'};
+var _debois$elm_mdl$Material_Color$Brown = {ctor: 'Brown'};
+var _debois$elm_mdl$Material_Color$Orange = {ctor: 'Orange'};
+var _debois$elm_mdl$Material_Color$Amber = {ctor: 'Amber'};
+var _debois$elm_mdl$Material_Color$Yellow = {ctor: 'Yellow'};
+var _debois$elm_mdl$Material_Color$Lime = {ctor: 'Lime'};
+var _debois$elm_mdl$Material_Color$LightGreen = {ctor: 'LightGreen'};
+var _debois$elm_mdl$Material_Color$Green = {ctor: 'Green'};
+var _debois$elm_mdl$Material_Color$Teal = {ctor: 'Teal'};
+var _debois$elm_mdl$Material_Color$Cyan = {ctor: 'Cyan'};
+var _debois$elm_mdl$Material_Color$LightBlue = {ctor: 'LightBlue'};
+var _debois$elm_mdl$Material_Color$Blue = {ctor: 'Blue'};
+var _debois$elm_mdl$Material_Color$Indigo = {ctor: 'Indigo'};
+var _debois$elm_mdl$Material_Color$hues = _elm_lang$core$Array$fromList(
+	{
+		ctor: '::',
+		_0: _debois$elm_mdl$Material_Color$Indigo,
+		_1: {
+			ctor: '::',
+			_0: _debois$elm_mdl$Material_Color$Blue,
+			_1: {
+				ctor: '::',
+				_0: _debois$elm_mdl$Material_Color$LightBlue,
+				_1: {
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Color$Cyan,
+					_1: {
+						ctor: '::',
+						_0: _debois$elm_mdl$Material_Color$Teal,
+						_1: {
+							ctor: '::',
+							_0: _debois$elm_mdl$Material_Color$Green,
+							_1: {
+								ctor: '::',
+								_0: _debois$elm_mdl$Material_Color$LightGreen,
+								_1: {
+									ctor: '::',
+									_0: _debois$elm_mdl$Material_Color$Lime,
+									_1: {
+										ctor: '::',
+										_0: _debois$elm_mdl$Material_Color$Yellow,
+										_1: {
+											ctor: '::',
+											_0: _debois$elm_mdl$Material_Color$Amber,
+											_1: {
+												ctor: '::',
+												_0: _debois$elm_mdl$Material_Color$Orange,
+												_1: {
+													ctor: '::',
+													_0: _debois$elm_mdl$Material_Color$Brown,
+													_1: {
+														ctor: '::',
+														_0: _debois$elm_mdl$Material_Color$BlueGrey,
+														_1: {
+															ctor: '::',
+															_0: _debois$elm_mdl$Material_Color$Grey,
+															_1: {
+																ctor: '::',
+																_0: _debois$elm_mdl$Material_Color$DeepOrange,
+																_1: {
+																	ctor: '::',
+																	_0: _debois$elm_mdl$Material_Color$Red,
+																	_1: {
+																		ctor: '::',
+																		_0: _debois$elm_mdl$Material_Color$Pink,
+																		_1: {
+																			ctor: '::',
+																			_0: _debois$elm_mdl$Material_Color$Purple,
+																			_1: {
+																				ctor: '::',
+																				_0: _debois$elm_mdl$Material_Color$DeepPurple,
+																				_1: {ctor: '[]'}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _debois$elm_mdl$Material_Color$accentHues = _elm_lang$core$Array$fromList(
+	{
+		ctor: '::',
+		_0: _debois$elm_mdl$Material_Color$Indigo,
+		_1: {
+			ctor: '::',
+			_0: _debois$elm_mdl$Material_Color$Blue,
+			_1: {
+				ctor: '::',
+				_0: _debois$elm_mdl$Material_Color$LightBlue,
+				_1: {
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Color$Cyan,
+					_1: {
+						ctor: '::',
+						_0: _debois$elm_mdl$Material_Color$Teal,
+						_1: {
+							ctor: '::',
+							_0: _debois$elm_mdl$Material_Color$Green,
+							_1: {
+								ctor: '::',
+								_0: _debois$elm_mdl$Material_Color$LightGreen,
+								_1: {
+									ctor: '::',
+									_0: _debois$elm_mdl$Material_Color$Lime,
+									_1: {
+										ctor: '::',
+										_0: _debois$elm_mdl$Material_Color$Yellow,
+										_1: {
+											ctor: '::',
+											_0: _debois$elm_mdl$Material_Color$Amber,
+											_1: {
+												ctor: '::',
+												_0: _debois$elm_mdl$Material_Color$Orange,
+												_1: {
+													ctor: '::',
+													_0: _debois$elm_mdl$Material_Color$DeepOrange,
+													_1: {
+														ctor: '::',
+														_0: _debois$elm_mdl$Material_Color$Red,
+														_1: {
+															ctor: '::',
+															_0: _debois$elm_mdl$Material_Color$Pink,
+															_1: {
+																ctor: '::',
+																_0: _debois$elm_mdl$Material_Color$Purple,
+																_1: {
+																	ctor: '::',
+																	_0: _debois$elm_mdl$Material_Color$DeepPurple,
+																	_1: {ctor: '[]'}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _debois$elm_mdl$Material_Color$A700 = {ctor: 'A700'};
+var _debois$elm_mdl$Material_Color$A400 = {ctor: 'A400'};
+var _debois$elm_mdl$Material_Color$A200 = {ctor: 'A200'};
+var _debois$elm_mdl$Material_Color$A100 = {ctor: 'A100'};
+var _debois$elm_mdl$Material_Color$S900 = {ctor: 'S900'};
+var _debois$elm_mdl$Material_Color$S800 = {ctor: 'S800'};
+var _debois$elm_mdl$Material_Color$S700 = {ctor: 'S700'};
+var _debois$elm_mdl$Material_Color$S600 = {ctor: 'S600'};
+var _debois$elm_mdl$Material_Color$S500 = {ctor: 'S500'};
+var _debois$elm_mdl$Material_Color$S400 = {ctor: 'S400'};
+var _debois$elm_mdl$Material_Color$S300 = {ctor: 'S300'};
+var _debois$elm_mdl$Material_Color$S200 = {ctor: 'S200'};
+var _debois$elm_mdl$Material_Color$S100 = {ctor: 'S100'};
+var _debois$elm_mdl$Material_Color$S50 = {ctor: 'S50'};
+var _debois$elm_mdl$Material_Color$shades = _elm_lang$core$Array$fromList(
+	{
+		ctor: '::',
+		_0: _debois$elm_mdl$Material_Color$S50,
+		_1: {
+			ctor: '::',
+			_0: _debois$elm_mdl$Material_Color$S100,
+			_1: {
+				ctor: '::',
+				_0: _debois$elm_mdl$Material_Color$S200,
+				_1: {
+					ctor: '::',
+					_0: _debois$elm_mdl$Material_Color$S300,
+					_1: {
+						ctor: '::',
+						_0: _debois$elm_mdl$Material_Color$S400,
+						_1: {
+							ctor: '::',
+							_0: _debois$elm_mdl$Material_Color$S500,
+							_1: {
+								ctor: '::',
+								_0: _debois$elm_mdl$Material_Color$S600,
+								_1: {
+									ctor: '::',
+									_0: _debois$elm_mdl$Material_Color$S700,
+									_1: {
+										ctor: '::',
+										_0: _debois$elm_mdl$Material_Color$S800,
+										_1: {
+											ctor: '::',
+											_0: _debois$elm_mdl$Material_Color$S900,
+											_1: {
+												ctor: '::',
+												_0: _debois$elm_mdl$Material_Color$A100,
+												_1: {
+													ctor: '::',
+													_0: _debois$elm_mdl$Material_Color$A200,
+													_1: {
+														ctor: '::',
+														_0: _debois$elm_mdl$Material_Color$A400,
+														_1: {
+															ctor: '::',
+															_0: _debois$elm_mdl$Material_Color$A700,
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _debois$elm_mdl$Material_Color$C = function (a) {
+	return {ctor: 'C', _0: a};
+};
+var _debois$elm_mdl$Material_Color$color = F2(
+	function (hue, shade) {
+		return _debois$elm_mdl$Material_Color$C(
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_debois$elm_mdl$Material_Color$hueName(hue),
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'-',
+					_debois$elm_mdl$Material_Color$shadeName(shade))));
+	});
+var _debois$elm_mdl$Material_Color$white = _debois$elm_mdl$Material_Color$C('white');
+var _debois$elm_mdl$Material_Color$black = _debois$elm_mdl$Material_Color$C('black');
+var _debois$elm_mdl$Material_Color$primary = _debois$elm_mdl$Material_Color$C('primary');
+var _debois$elm_mdl$Material_Color$primaryDark = _debois$elm_mdl$Material_Color$C('primary-dark');
+var _debois$elm_mdl$Material_Color$primaryContrast = _debois$elm_mdl$Material_Color$C('primary-contrast');
+var _debois$elm_mdl$Material_Color$accent = _debois$elm_mdl$Material_Color$C('accent');
+var _debois$elm_mdl$Material_Color$accentContrast = _debois$elm_mdl$Material_Color$C('accent-contrast');
+
 var _debois$elm_mdl$Material_Grid$clip = F3(
 	function (lower, upper, k) {
 		return A2(
@@ -15135,11 +15864,19 @@ var _code_star$elm_codestar_website$Main$viewDifferencePage = function (model) {
 						_debois$elm_mdl$Material_Grid$cell,
 						{
 							ctor: '::',
-							_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$All, 3),
+							_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$Desktop, 3),
 							_1: {
 								ctor: '::',
-								_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$All, 6),
-								_1: {ctor: '[]'}
+								_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$Tablet, 1),
+								_1: {
+									ctor: '::',
+									_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Desktop, 6),
+									_1: {
+										ctor: '::',
+										_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Tablet, 10),
+										_1: {ctor: '[]'}
+									}
+								}
 							}
 						},
 						{
@@ -15221,11 +15958,19 @@ var _code_star$elm_codestar_website$Main$viewJobsPage = function (model) {
 						_debois$elm_mdl$Material_Grid$cell,
 						{
 							ctor: '::',
-							_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$All, 3),
+							_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$Desktop, 3),
 							_1: {
 								ctor: '::',
-								_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$All, 6),
-								_1: {ctor: '[]'}
+								_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$Tablet, 1),
+								_1: {
+									ctor: '::',
+									_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Desktop, 6),
+									_1: {
+										ctor: '::',
+										_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Tablet, 10),
+										_1: {ctor: '[]'}
+									}
+								}
 							}
 						},
 						{
@@ -15267,35 +16012,18 @@ var _code_star$elm_codestar_website$Main$viewJobsPage = function (model) {
 			_1: {ctor: '[]'}
 		});
 };
-var _code_star$elm_codestar_website$Main$viewDummyPage = F2(
+var _code_star$elm_codestar_website$Main$eventsPage = F2(
 	function (model, color) {
 		return A2(
 			_elm_lang$html$Html$section,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'align-items', _1: 'center'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'background-color', _1: color},
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}),
-				_1: {ctor: '[]'}
+				_0: _elm_lang$html$Html_Attributes$class('page events-page'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$id('events'),
+					_1: {ctor: '[]'}
+				}
 			},
 			{
 				ctor: '::',
@@ -15308,24 +16036,36 @@ var _code_star$elm_codestar_website$Main$viewDummyPage = F2(
 							_debois$elm_mdl$Material_Grid$cell,
 							{
 								ctor: '::',
-								_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$All, 3),
+								_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$Desktop, 3),
 								_1: {
 									ctor: '::',
-									_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$All, 6),
-									_1: {ctor: '[]'}
+									_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$Tablet, 1),
+									_1: {
+										ctor: '::',
+										_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Desktop, 6),
+										_1: {
+											ctor: '::',
+											_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Tablet, 10),
+											_1: {ctor: '[]'}
+										}
+									}
 								}
 							},
 							{
 								ctor: '::',
 								_0: A2(
-									_elm_lang$html$Html$img,
+									_elm_lang$html$Html$iframe,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$src('img/codestar-logo.svg'),
+										_0: _elm_lang$html$Html_Attributes$src('https://www.youtube.com/embed/LMtqXQkqTnM'),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$width(382),
-											_1: {ctor: '[]'}
+											_0: _elm_lang$html$Html_Attributes$width(300),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$height(350),
+												_1: {ctor: '[]'}
+											}
 										}
 									},
 									{ctor: '[]'}),
@@ -15336,41 +16076,197 @@ var _code_star$elm_codestar_website$Main$viewDummyPage = F2(
 										{ctor: '[]'},
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html$text('De mogelijkheden in de digitale wereld zijn eindeloos. Uitdagingen vaak complex. Wij ontwikkelen moderne software die simpel te gebruiken is. Agile en productief, met gebruik van de nieuwste technieken. Wij programmeren. Met ons hoofd én met ons hart. Voor organisaties die de volgende stap willen zetten.'),
+											_0: _elm_lang$html$Html$text('Codestar invites you to an evening with Andre Staltz, a renowned expert on reactive programming and author/contributor to frameworks like Cycle.js and RxJS. He will enlighten us with two brand new and unique talks about functional and reactive programming respectively, tailored to full-stack developers that have experience with working with reactive streams.'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
 										ctor: '::',
 										_0: A2(
-											_elm_lang$html$Html$p,
+											_elm_lang$html$Html$h5,
 											{ctor: '[]'},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar.'),
+												_0: _elm_lang$html$Html$text('Talk 1: OOP is dead only if FP is dead'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {
 											ctor: '::',
-											_0: A5(
-												_debois$elm_mdl$Material_Button$render,
-												_code_star$elm_codestar_website$Msg$Mdl,
+											_0: A2(
+												_elm_lang$html$Html$p,
+												{ctor: '[]'},
 												{
 													ctor: '::',
-													_0: 0,
-													_1: {ctor: '[]'}
-												},
-												model.mdl,
-												{
-													ctor: '::',
-													_0: _debois$elm_mdl$Material_Button$raised,
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('Menu NYI'),
+													_0: _elm_lang$html$Html$text('If you are looking for the most epic of flame wars, look no further than the threads discussing the differences between object-oriented programming (OOP) and functional programming (FP). Especially proponents of functional programming are known for some pretty smug remarks:'),
 													_1: {ctor: '[]'}
 												}),
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$p,
+													{ctor: '[]'},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('\'If you knew category theory, you\'d get it!\''),
+														_1: {ctor: '[]'}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$p,
+														{ctor: '[]'},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('\'Design patterns in Haskell? Hey everyone, look at the muggle try to get the wand to work!\''),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$p,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text('But is functional programming really in direct opposition to object-oriented programming? Although these two programming paradigms have important differences, they actually share a lot in common.'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$p,
+																{ctor: '[]'},
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html$text('In this talk, Andre will explore the gray area between OOP and FP, with code samples in JavaScript, TypeScript, and Haskell, kept easy enough for any programmer to follow and none of the smugness you’ll find online!'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$h5,
+																	{ctor: '[]'},
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html$text('Talk 2: Live Coding - Two fundamental abstractions'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_elm_lang$html$Html$p,
+																		{ctor: '[]'},
+																		{
+																			ctor: '::',
+																			_0: _elm_lang$html$Html$text('Getters and setters are a natural abstraction in any programming environment. But a talk about those would hardly be interesting. Instead, we will take these familiar and fundamental concepts and take them to the next level. We will discuss how “getter getters” are useful, how “setter setters” are useful, and specially how \'setter setters\' are just simple RxJS Observables.'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {
+																		ctor: '::',
+																		_0: A2(
+																			_elm_lang$html$Html$p,
+																			{ctor: '[]'},
+																			{
+																				ctor: '::',
+																				_0: _elm_lang$html$Html$text('We will also learn how these “higher order” getters and setters can serve as building blocks for other abstractions when you are working with reactive streams (independent of the language you are working in). Come and find out how these exciting new insights might benefit your code!'),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {
+																			ctor: '::',
+																			_0: A5(
+																				_debois$elm_mdl$Material_Button$render,
+																				_code_star$elm_codestar_website$Msg$Mdl,
+																				{
+																					ctor: '::',
+																					_0: 0,
+																					_1: {ctor: '[]'}
+																				},
+																				model.mdl,
+																				{
+																					ctor: '::',
+																					_0: _debois$elm_mdl$Material_Button$ripple,
+																					_1: {
+																						ctor: '::',
+																						_0: _debois$elm_mdl$Material_Button$raised,
+																						_1: {
+																							ctor: '::',
+																							_0: _debois$elm_mdl$Material_Button$colored,
+																							_1: {
+																								ctor: '::',
+																								_0: _debois$elm_mdl$Material_Button$link('https://www.meetup.com/Code-Star-Night/events/242404035/'),
+																								_1: {ctor: '[]'}
+																							}
+																						}
+																					}
+																				},
+																				{
+																					ctor: '::',
+																					_0: _elm_lang$html$Html$text('Attend to meetup'),
+																					_1: {ctor: '[]'}
+																				}),
+																			_1: {
+																				ctor: '::',
+																				_0: A2(
+																					_elm_lang$html$Html$h5,
+																					{ctor: '[]'},
+																					{
+																						ctor: '::',
+																						_0: _elm_lang$html$Html$text('BONUS: RxJS training 29th of September'),
+																						_1: {ctor: '[]'}
+																					}),
+																				_1: {
+																					ctor: '::',
+																					_0: A2(
+																						_elm_lang$html$Html$p,
+																						{ctor: '[]'},
+																						{
+																							ctor: '::',
+																							_0: _elm_lang$html$Html$text('If you still haven\'t got enough of functional and reactive programming after these two captivating talks, we invite you to join us for a Friday packed to the brim with reactive, functional, and André Staltz. Sign up below!'),
+																							_1: {ctor: '[]'}
+																						}),
+																					_1: {
+																						ctor: '::',
+																						_0: A5(
+																							_debois$elm_mdl$Material_Button$render,
+																							_code_star$elm_codestar_website$Msg$Mdl,
+																							{
+																								ctor: '::',
+																								_0: 0,
+																								_1: {ctor: '[]'}
+																							},
+																							model.mdl,
+																							{
+																								ctor: '::',
+																								_0: _debois$elm_mdl$Material_Button$ripple,
+																								_1: {
+																									ctor: '::',
+																									_0: _debois$elm_mdl$Material_Button$raised,
+																									_1: {
+																										ctor: '::',
+																										_0: _debois$elm_mdl$Material_Button$colored,
+																										_1: {
+																											ctor: '::',
+																											_0: _debois$elm_mdl$Material_Button$link('http://go.ordina.nl/l/83122/2017-08-14/7ykd4j#referrer=meetupcom'),
+																											_1: {ctor: '[]'}
+																										}
+																									}
+																								}
+																							},
+																							{
+																								ctor: '::',
+																								_0: _elm_lang$html$Html$text('Attend to training'),
+																								_1: {ctor: '[]'}
+																							}),
+																						_1: {ctor: '[]'}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
 										}
 									}
 								}
@@ -15385,28 +16281,7 @@ var _code_star$elm_codestar_website$Main$viewLandingPage = function (model) {
 		_elm_lang$html$Html$section,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'align-items', _1: 'center'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'background', _1: 'linear-gradient(#0c4d90 0%, #1464af 100%)'},
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				}),
+			_0: _elm_lang$html$Html_Attributes$class('page landing-page'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -15420,100 +16295,170 @@ var _code_star$elm_codestar_website$Main$viewLandingPage = function (model) {
 						_debois$elm_mdl$Material_Grid$cell,
 						{
 							ctor: '::',
-							_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$All, 3),
+							_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$Desktop, 3),
 							_1: {
 								ctor: '::',
-								_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$All, 6),
-								_1: {ctor: '[]'}
+								_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Desktop, 6),
+								_1: {
+									ctor: '::',
+									_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Tablet, 10),
+									_1: {
+										ctor: '::',
+										_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$Phone, 12),
+										_1: {ctor: '[]'}
+									}
+								}
 							}
 						},
 						{
 							ctor: '::',
 							_0: A2(
-								_elm_lang$html$Html$img,
+								_debois$elm_mdl$Material_Card$view,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$src('img/codestar-logo.svg'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$width(382),
-										_1: {ctor: '[]'}
-									}
+									_0: A2(_debois$elm_mdl$Material_Options$css, 'width', '100%'),
+									_1: {ctor: '[]'}
 								},
-								{ctor: '[]'}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$p,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('De mogelijkheden in de digitale wereld zijn eindeloos. Uitdagingen vaak complex. Wij ontwikkelen moderne software die simpel te gebruiken is. Agile en productief, met gebruik van de nieuwste technieken. Wij programmeren. Met ons hoofd én met ons hart. Voor organisaties die de volgende stap willen zetten.'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
+								{
 									ctor: '::',
 									_0: A2(
-										_elm_lang$html$Html$p,
-										{ctor: '[]'},
+										_debois$elm_mdl$Material_Card$title,
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html$text('Wij zijn de #1 partner voor Full Stack Scala en Big Data oplossingen in Nederland. Wij zijn Codestar.'),
+											_0: A2(_debois$elm_mdl$Material_Options$css, 'background', 'url(\'https://secure.meetupstatic.com/photos/event/8/a/9/600_463562217.jpeg\') center / cover'),
+											_1: {
+												ctor: '::',
+												_0: A2(_debois$elm_mdl$Material_Options$css, 'height', '256px'),
+												_1: {
+													ctor: '::',
+													_0: A2(_debois$elm_mdl$Material_Options$css, 'padding', '0'),
+													_1: {ctor: '[]'}
+												}
+											}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_debois$elm_mdl$Material_Card$head,
+												{
+													ctor: '::',
+													_0: _debois$elm_mdl$Material_Options$scrim(0.75),
+													_1: {
+														ctor: '::',
+														_0: A2(_debois$elm_mdl$Material_Options$css, 'padding', '16px'),
+														_1: {
+															ctor: '::',
+															_0: A2(_debois$elm_mdl$Material_Options$css, 'width', '100%'),
+															_1: {
+																ctor: '::',
+																_0: A2(_debois$elm_mdl$Material_Options$css, 'color', 'rgb(240,131,0)'),
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('September 28, 2017'),
+													_1: {ctor: '[]'}
+												}),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
 										ctor: '::',
-										_0: A5(
-											_debois$elm_mdl$Material_Button$render,
-											_code_star$elm_codestar_website$Msg$Mdl,
+										_0: A2(
+											_debois$elm_mdl$Material_Card$text,
+											{ctor: '[]'},
 											{
 												ctor: '::',
-												_0: 0,
-												_1: {ctor: '[]'}
-											},
-											model.mdl,
-											{
-												ctor: '::',
-												_0: _debois$elm_mdl$Material_Button$raised,
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('Menu NYI'),
+												_0: _elm_lang$html$Html$text('Codestar invites you to an evening with Andre Staltz, a renowned expert on reactive programming and author/contributor to frameworks like Cycle.js and RxJS. He will enlighten us with two brand new and unique talks about functional and reactive programming respectively, tailored to full-stack developers that have experience with working with reactive streams. '),
 												_1: {ctor: '[]'}
 											}),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_debois$elm_mdl$Material_Card$actions,
+												{
+													ctor: '::',
+													_0: _debois$elm_mdl$Material_Card$border,
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A5(
+														_debois$elm_mdl$Material_Button$render,
+														_code_star$elm_codestar_website$Msg$Mdl,
+														{
+															ctor: '::',
+															_0: 1,
+															_1: {
+																ctor: '::',
+																_0: 0,
+																_1: {ctor: '[]'}
+															}
+														},
+														model.mdl,
+														{
+															ctor: '::',
+															_0: _debois$elm_mdl$Material_Button$ripple,
+															_1: {
+																ctor: '::',
+																_0: _debois$elm_mdl$Material_Button$raised,
+																_1: {
+																	ctor: '::',
+																	_0: _debois$elm_mdl$Material_Button$colored,
+																	_1: {
+																		ctor: '::',
+																		_0: _debois$elm_mdl$Material_Button$link('https://www.meetup.com/Code-Star-Night/events/242404035/'),
+																		_1: {ctor: '[]'}
+																	}
+																}
+															}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('Attend'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A5(
+															_debois$elm_mdl$Material_Button$render,
+															_code_star$elm_codestar_website$Msg$Mdl,
+															{
+																ctor: '::',
+																_0: 1,
+																_1: {
+																	ctor: '::',
+																	_0: 1,
+																	_1: {ctor: '[]'}
+																}
+															},
+															model.mdl,
+															{
+																ctor: '::',
+																_0: _debois$elm_mdl$Material_Button$ripple,
+																_1: {
+																	ctor: '::',
+																	_0: _debois$elm_mdl$Material_Button$link('#events'),
+																	_1: {ctor: '[]'}
+																}
+															},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text('Read more'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {ctor: '[]'}
+										}
 									}
-								}
-							}
+								}),
+							_1: {ctor: '[]'}
 						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_debois$elm_mdl$Material_Grid$cell,
-							{
-								ctor: '::',
-								_0: A2(_debois$elm_mdl$Material_Grid$offset, _debois$elm_mdl$Material_Grid$All, 3),
-								_1: {
-									ctor: '::',
-									_0: A2(_debois$elm_mdl$Material_Grid$size, _debois$elm_mdl$Material_Grid$All, 6),
-									_1: {ctor: '[]'}
-								}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('some text'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}
+					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}
 		});
@@ -15523,35 +16468,181 @@ var _code_star$elm_codestar_website$Main$view = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'background-color', _1: '#0f569a'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: 'white'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
-							_1: {ctor: '[]'}
-						}
-					}
-				}),
+			_0: _elm_lang$html$Html_Attributes$class('codestar-page-wrapper'),
 			_1: {ctor: '[]'}
 		},
 		{
 			ctor: '::',
-			_0: _code_star$elm_codestar_website$GithubBanner_View$viewGithubBanner,
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('header'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$a,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$href('https://www.codestar.nl/'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$img,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$src('img/codestar-logo-notext.svg'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('logo'),
+										_1: {ctor: '[]'}
+									}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$h2,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$a,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$href('#'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('active'),
+											_1: {ctor: '[]'}
+										}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Events'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$h2,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$a,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$href('#'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('Photos'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$h2,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$a,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$href('#'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('Articles'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$h2,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$a,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$href('#'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('About'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$h2,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('[Social Media icons]'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$a,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$href('https://www.codestar.nl/#join'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('jobs-link'),
+														_1: {ctor: '[]'}
+													}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('We\'re hiring!'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}),
 			_1: {
 				ctor: '::',
 				_0: _code_star$elm_codestar_website$Main$viewLandingPage(model),
 				_1: {
 					ctor: '::',
-					_0: _code_star$elm_codestar_website$Main$viewDifferencePage(model),
+					_0: A2(_code_star$elm_codestar_website$Main$eventsPage, model, '#0C4D90'),
 					_1: {
 						ctor: '::',
-						_0: _code_star$elm_codestar_website$Main$viewJobsPage(model),
-						_1: {ctor: '[]'}
+						_0: _code_star$elm_codestar_website$Main$viewDifferencePage(model),
+						_1: {
+							ctor: '::',
+							_0: _code_star$elm_codestar_website$Main$viewJobsPage(model),
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
@@ -15591,6 +16682,10 @@ var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _code_star$elm_codestar_website$Main$main !== 'undefined') {
     _code_star$elm_codestar_website$Main$main(Elm['Main'], 'Main', undefined);
+}
+Elm['Msg'] = Elm['Msg'] || {};
+if (typeof _code_star$elm_codestar_website$Msg$main !== 'undefined') {
+    _code_star$elm_codestar_website$Msg$main(Elm['Msg'], 'Msg', undefined);
 }
 
 if (typeof define === "function" && define['amd'])

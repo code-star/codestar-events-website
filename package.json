@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "elm-format app/src --yes",
+    "format": "elm-format app/src/elm --yes",
     "format-validate": "elm-format app/src --validate",
-    "build": "npm run format && elm make app/src/Main.elm --output=docs/main.js",
-    "deploy": "elm make app/src/Main.elm --output=docs/main.js",
-    "watch": "npm-watch",
+    "build": "npm run format && gulp",
+    "watch": "gulp watch",
     "watch-alt": "node watch.js",
     "start": "npm run format && elm-reactor",
     "postinstall": "elm package install --yes"
@@ -29,6 +28,15 @@
   },
   "homepage": "https://github.com/code-star/elm-codestar-website#readme",
   "dependencies": {
+    "del": "3.0.0",
+    "gulp": "3.9.1",
+    "gulp-clean-css": "3.7.0",
+    "gulp-elm": "0.7.2",
+    "gulp-less": "3.3.2",
+    "gulp-livereload": "3.8.1",
+    "gulp-rename": "1.2.2",
+    "gulp-size": "2.1.0",
+    "merge-stream": "1.0.1",
     "npm-watch": "^0.2.0"
   },
   "peerDependencies": {

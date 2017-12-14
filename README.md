@@ -6,13 +6,18 @@ https://guide.elm-lang.org/install.html
 
 ## Run
 
-* nvm use 8.0.0
+* nvm use 8.2.x
 * installation: `npm install`
-* set up symlink for debugging: `ln -s docs/img debug/img`
+* set up symlink for debugging: `ln -s /docs/img /debug/img` (use absolute paths in MacOS)
 * run `npm run start`
 * go to http://localhost:8000/debug/index.html
 
 npm-watch does not work correctly on MacOS: https://github.com/M-Zuber/npm-watch/issues/35
+
+## Develop
+* run `npm run watch` to start Gulp with live reload
+* run `elm reactor` to start the developent server
+* go to [http://localhost:8000/debug/index.html](http://localhost:8000/debug/index.html)   
 
 
 ## Build

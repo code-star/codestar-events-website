@@ -1,0 +1,49 @@
+.codestar-page-wrapper .header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 15px;
+  background-color: #145895;
+  z-index: 100;
+  text-align: center;
+
+  .logo {
+    height: 40px;
+    float: left;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    color: #b7b7b7;
+    cursor: pointer;
+    display: inline;
+    margin: 0 20px;
+    text-transform: uppercase;
+
+    a {
+      color: #b7b7b7;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover, a.active {
+      color: white;
+    }
+  }
+
+  .jobs-link {
+    display: inline-block;
+    background-color: @orange;
+    color: #fff;
+    padding: 2px 4px;
+    text-decoration: none;
+    margin: 0.7em 3em;
+    font-size: 12px;
+    float: left;
+
+    &:hover {
+      background-color: darken(@orange, 2%);
+    }
+  }
+}
