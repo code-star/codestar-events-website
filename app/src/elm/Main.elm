@@ -12,7 +12,7 @@ import Material.Grid exposing (Device(..), cell, grid, size)
 import Material.Menu as Menu exposing (render)
 import Material.Options as Options exposing (Style, cs, css)
 import Elm.Msg as Main exposing (..)
-
+import Elm.Assets exposing (..)
 
 -- MAIN
 
@@ -73,10 +73,12 @@ view model =
             [ class "header" ]
             [ a [ href "https://www.codestar.nl/" ]
                 [ img
-                    [ src "codestar-logo-notext.svg"
+                    --[ src "codestar-logo-notext.svg"
+                    [ src <| Elm.Assets.path <| Elm.Assets.logo
                     , class "logo"
                     ]
                     []
+                , Html.text <| Elm.Assets.path <| Elm.Assets.logo
                 ]
             , h2 []
                 [ a

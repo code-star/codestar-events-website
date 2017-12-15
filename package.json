@@ -1,5 +1,5 @@
 {
-  "name": "elm-codestar-website",
+  "name": "codestar-events-website",
   "version": "1.0.0",
   "description": "Elm rebuild of codestar.nl",
   "main": "index.js",
@@ -18,17 +18,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/code-star/elm-codestar-website.git"
+    "url": "git+https://github.com/code-star/codestar-events-website.git"
   },
   "private": true,
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/code-star/elm-codestar-website/issues"
+    "url": "https://github.com/code-star/codestar-events-website/issues"
   },
-  "homepage": "https://github.com/code-star/elm-codestar-website#readme",
+  "homepage": "https://github.com/code-star/codestar-events-website#readme",
   "dependencies": {
     "del": "3.0.0",
+    "elm-assets-loader": "^0.3.0",
     "gulp": "3.9.1",
     "gulp-clean-css": "3.7.0",
     "gulp-elm": "0.7.2",
@@ -45,6 +46,7 @@
     "elm-format": "^0.7.0-exp"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "concurrently": "^3.5.0",
     "cors-anywhere": "0.4.0",
     "css-loader": "^0.28.7",

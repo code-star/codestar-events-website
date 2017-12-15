@@ -6,7 +6,7 @@
 
 // Require index.html so it gets copied to dist
 require('./index.html');
-require('./img/codestar-logo-notext.svg'); // Is used in Main.elm, but not resolved by Webpack?
+require('./codestar-logo-notext.svg'); // Is used in Main.elm, but not resolved by Webpack?
 
 //require('./less/style.less');
 import * as style from './less/style.less';

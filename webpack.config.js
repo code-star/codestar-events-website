@@ -30,11 +30,21 @@ module.exports = {
             {
                 test:    /\.elm$/,
                 exclude: [/elm-stuff/, /node_modules/],
-                loader:  'elm-webpack-loader?verbose=true&warn=true',
+                use: [
+                    {
+                        loader: 'elm-assets-loader',
+                        options: {
+                            module: 'Elm.Assets',
+                            tagger: 'AssetPath',
+                            package: 'code-star/codestar-events-website'
+                        }
+                    },
+                    'elm-webpack-loader?verbose=true&warn=true'
+                ]
             },
             {
                 test: /\.(png|jpg|svg)$/,
-                loader: 'url-loader'
+                loader: 'file-loader'
             },
             {
                 test: /\.(woff(2)?|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -53,6 +63,5 @@ module.exports = {
         inline: true,
         stats: { colors: true },
     },
-
 
 };
