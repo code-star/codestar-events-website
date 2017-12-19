@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
     entry: {
@@ -56,7 +56,8 @@ module.exports = {
             // },
         ],
 
-        noParse: /\.elm$/,
+        // See "Elm for frontend developers" blog
+        // noParse: /\.elm$/,
     },
 
     devServer: {

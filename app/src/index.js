@@ -5,11 +5,9 @@
 // require('font-awesome/css/font-awesome.css');
 
 // Require index.html so it gets copied to dist
-require('./index.html');
-require('./codestar-logo-notext.svg'); // Is used in Main.elm, but not resolved by Webpack?
+import './index.html';
 
-//require('./less/style.less');
-import * as style from './less/style.less';
+import './less/style.less';
 
 const Elm = require('./elm/Main.elm');
 const mountNode = document.getElementById('main');

@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "Elm version of codestar.nl",
-    "repository": "https://github.com/code-star/foo-codestar-events-website.git",
+    "repository": "https://github.com/code-star/codestar-events-website.git",
     "license": "MIT",
     "source-directories": [
         "app/src"
