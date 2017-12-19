@@ -1,7 +1,8 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-// TODO is it dev?
+const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'PROD' : 'DEV';
+const isProd = TARGET_ENV === 'PROD';
 
 module.exports = {
     entry: {
@@ -47,7 +48,7 @@ module.exports = {
                         options: {
                             verbose: true,
                             warn: true,
-                            debug: true
+                            debug: !isProd
                         }
                     }
 
