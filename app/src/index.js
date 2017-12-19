@@ -7,9 +7,9 @@
 // Require index.html so it gets copied to dist
 import './index.html';
 
-import './less/style.less';
+import '../less/style.less';
 
-const Elm = require('./elm/Main.elm');
+const Elm = require('./Page/Main.elm');
 const mountNode = document.getElementById('main');
 
 // .embed() can take an optional second argument. This would be an object describing the data we need to start a program, i.e. a userID or some token

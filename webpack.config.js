@@ -35,7 +35,7 @@ module.exports = {
                     {
                         loader: 'elm-assets-loader',
                         options: {
-                            module: 'Elm.Assets',
+                            module: 'Page.Assets',
                             tagger: 'AssetPath',
                             package: 'code-star/codestar-events-website'
                         }

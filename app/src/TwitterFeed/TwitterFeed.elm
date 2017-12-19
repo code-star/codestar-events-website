@@ -25,6 +25,7 @@ init : ( Model, Cmd Msg )
 init =
     ( initialModel, initCmd )
 
+
 initCmd : Cmd Msg
 initCmd =
     Task.attempt NewTweets fetchTweets
@@ -38,6 +39,8 @@ update msg model =
 
         NewTweets (Err _) ->
             ( { model | message = "Error while fetching tweets!" }, Cmd.none )
+
+
 
 -- SUBSCRIPTIONS
 

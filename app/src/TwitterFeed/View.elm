@@ -1,6 +1,6 @@
 module TwitterFeed.View exposing (..)
 
-import Html exposing (Attribute, Html, br, div, iframe, input, program, section, text, img, h4, p)
+import Html exposing (Attribute, Html, br, div, h4, iframe, img, input, p, program, section, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import TwitterFeed.State exposing (..)
@@ -11,18 +11,22 @@ import TwitterFeed.Types exposing (..)
 tweetImageUrl : Tweet -> String
 tweetImageUrl tweet =
     case tweet.retweetImgUrl of
-      Nothing ->
-        tweet.imgUrl
-      Just val ->
-        val
+        Nothing ->
+            tweet.imgUrl
+
+        Just val ->
+            val
+
 
 tweetUser : Tweet -> String
 tweetUser tweet =
     case tweet.retweetUsername of
-      Nothing ->
-        tweet.userName
-      Just val ->
-        val
+        Nothing ->
+            tweet.userName
+
+        Just val ->
+            val
+
 
 renderTweet : Tweet -> Html Msg
 renderTweet tweet =
@@ -31,21 +35,22 @@ renderTweet tweet =
         [ div
             [ twitterFeedImgWrapperStyle ]
             [ img
-              [ src (tweetImageUrl tweet)
-              , twitterFeedImgStyle
-              ] []
+                [ src (tweetImageUrl tweet)
+                , twitterFeedImgStyle
+                ]
+                []
             ]
         , div
-            [  ]
+            []
             [ h4
-                [ ]
+                []
                 [ text (tweetUser tweet) ]
             , p
-              [ tweetTimeStyle ]
-              [ text tweet.createdAt ]
+                [ tweetTimeStyle ]
+                [ text tweet.createdAt ]
             , p
-              [ ]
-              [ text tweet.text ]
+                []
+                [ text tweet.text ]
             ]
         ]
 

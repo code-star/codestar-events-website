@@ -12,7 +12,7 @@ type alias Tweet =
     , screenName : String
     , text : String
     , imgUrl : String
-    , retweetImgUrl : (Maybe String)
-    , retweetUsername : (Maybe String)
+    , retweetImgUrl : Maybe String
+    , retweetUsername : Maybe String
     , createdAt : String
     }

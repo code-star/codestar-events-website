@@ -1,4 +1,4 @@
-module Elm.Msg exposing (..)
+module Page.Msg exposing (..)
 
 import Material
 

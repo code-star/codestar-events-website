@@ -1,4 +1,4 @@
-module Elm.Assets exposing (..)
+module Page.Assets exposing (..)
 
 
 type AssetPath
@@ -6,7 +6,7 @@ type AssetPath
 
 
 logo =
-    AssetPath "../img/codestar-logo-notext.svg"
+    AssetPath "../../assets/img/codestar-logo-notext.svg"
 
 
 path : AssetPath -> String

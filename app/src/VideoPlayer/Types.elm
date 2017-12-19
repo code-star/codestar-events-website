@@ -1,6 +1,7 @@
 module VideoPlayer.Types exposing (..)
 
-import Http exposing(Error)
+import Http exposing (Error)
+
 
 type alias Model =
     { message : String
@@ -15,6 +16,7 @@ type alias VideoItem =
     , videoId : String
     , selected : Bool
     }
+
 
 type Msg
     = NewVideos (Result Error (List VideoItem))

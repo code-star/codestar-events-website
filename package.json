@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "elm-format app/src/elm --yes",
+    "format": "elm-format app/src --yes",
     "format-validate": "elm-format app/src --validate",
     "build": "./node_modules/.bin/webpack",
     "start": "npm run format && ./node_modules/.bin/concurrently \"node scripts/server.js\" \"./node_modules/.bin/webpack-dev-server\"",
