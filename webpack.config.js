@@ -1,4 +1,5 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -59,6 +60,10 @@ module.exports = {
         // See "Elm for frontend developers" blog
         // noParse: /\.elm$/,
     },
+
+    plugins: [
+        new CleanWebpackPlugin(['docs'])
+    ],
 
     devServer: {
         inline: true,
