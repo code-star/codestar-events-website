@@ -1,5 +1,7 @@
 module Main exposing (..)
 
+import Elm.Assets exposing (..)
+import Elm.Msg as Main exposing (..)
 import Html exposing (Html, a, br, div, h1, h2, h4, h5, iframe, img, input, p, program, section, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
@@ -11,8 +13,7 @@ import Material.Color as Color
 import Material.Grid exposing (Device(..), cell, grid, size)
 import Material.Menu as Menu exposing (render)
 import Material.Options as Options exposing (Style, cs, css)
-import Elm.Msg as Main exposing (..)
-import Elm.Assets exposing (..)
+
 
 -- MAIN
 
@@ -73,12 +74,10 @@ view model =
             [ class "header" ]
             [ a [ href "https://www.codestar.nl/" ]
                 [ img
-                    --[ src "codestar-logo-notext.svg"
                     [ src <| Elm.Assets.path <| Elm.Assets.logo
                     , class "logo"
                     ]
                     []
-                , Html.text <| Elm.Assets.path <| Elm.Assets.logo
                 ]
             , h2 []
                 [ a

@@ -7,21 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "elm-format app/src/elm --yes",
     "format-validate": "elm-format app/src --validate",
-    "build": "npm run format && gulp",
-    "watch": "gulp watch",
-    "watch-alt": "node watch.js",
-    "start": "npm run format && elm-reactor",
+    "build": "./node_modules/.bin/webpack",
+    "start": "npm run format && ./node_modules/.bin/concurrently \"node scripts/server.js\" \"./node_modules/.bin/webpack-dev-server\"",
     "postinstall": "elm package install --yes"
-  },
-  "watch": {
-    "develop": "app/**/*.elm"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/code-star/codestar-events-website.git"
   },
   "private": true,
-  "author": "",
+  "author": "Codestar",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/code-star/codestar-events-website/issues"
@@ -29,16 +24,7 @@
   "homepage": "https://github.com/code-star/codestar-events-website#readme",
   "dependencies": {
     "del": "3.0.0",
-    "elm-assets-loader": "^0.3.0",
-    "gulp": "3.9.1",
-    "gulp-clean-css": "3.7.0",
-    "gulp-elm": "0.7.2",
-    "gulp-less": "3.3.2",
-    "gulp-livereload": "3.8.1",
-    "gulp-rename": "1.2.2",
-    "gulp-size": "2.1.0",
-    "merge-stream": "1.0.1",
-    "npm-watch": "^0.2.0"
+    "merge-stream": "1.0.1"
   },
   "peerDependencies": {
     "http-server": "^0.10.0",
@@ -48,9 +34,10 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "clean-webpack-plugin": "^0.1.17",
-    "concurrently": "^3.5.0",
+    "concurrently": "^3.5.1",
     "cors-anywhere": "0.4.0",
     "css-loader": "^0.28.7",
+    "elm-assets-loader": "^0.3.0",
     "elm-webpack-loader": "^4.4.0",
     "file-loader": "^1.1.5",
     "less": "^2.7.3",

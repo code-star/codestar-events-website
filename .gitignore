@@ -1,4 +1,5 @@
 /.idea
+/docs
 /elm-stuff
 /node_modules
 \.DS_Store
