@@ -9,9 +9,8 @@ https://guide.elm-lang.org/install.html
 * nvm use 8.2.x
 * installation: `npm install`
 * set up symlink for debugging: `ln -s /docs/img /debug/img` (use absolute paths in MacOS)
-* run `npm run start`
-* in another terminal, run `node scripts/server.js` (proxy for Twitter)
-* go to http://localhost:8000/debug/index.html
+* run `npm start`
+* go to http://localhost:8081
 
 npm-watch does not work correctly on MacOS: https://github.com/M-Zuber/npm-watch/issues/35
 

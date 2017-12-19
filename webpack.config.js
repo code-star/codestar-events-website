@@ -1,6 +1,8 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+// TODO is it dev?
+
 module.exports = {
     entry: {
         app: [
@@ -40,7 +42,15 @@ module.exports = {
                             package: 'code-star/codestar-events-website'
                         }
                     },
-                    'elm-webpack-loader?verbose=true&warn=true'
+                    {
+                        loader: 'elm-webpack-loader',
+                        options: {
+                            verbose: true,
+                            warn: true,
+                            debug: true
+                        }
+                    }
+
                 ]
             },
             {
