@@ -84,7 +84,7 @@ view model =
                     [ href "#"
                     , class "active"
                     ]
-                    [ Html.text "Events" ]
+                    [ Html.text "Events test" ]
                 ]
             , h2 []
                 [ a [ href "#" ]
