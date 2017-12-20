@@ -2,7 +2,8 @@ language: node_js
 node_js:
 - 8.2.1
 before_install: npm install -g elm # peer dependencies
-script: travis_wait 60 npm run build # wait for build up to 60 minutes! See also: elm-format is slowing down the build? elm-community/elm-test#182 and elm-lang/elm-compiler#1473
+# script: travis_wait 60 npm run build # wait for build up to 60 minutes! See also: elm-format is slowing down the build? elm-community/elm-test#182 and elm-lang/elm-compiler#1473
+script: npm run build
 deploy:
   # TEST
   - provider: pages
