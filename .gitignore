@@ -1,6 +1,7 @@
 /.idea
 /docs
 /elm-stuff
+/tests/elm-stuff
 /node_modules
 \.DS_Store
 /debug/img

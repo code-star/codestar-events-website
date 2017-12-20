@@ -43,6 +43,12 @@ Set up according to editor specific guide on https://github.com/avh4/elm-format
 
 If it works well, it can be added to `npm run start`, e.g. with `"start": "npm run format && concurrently --kill-others \"http-server docs\" \"npm run watch\""`
 
+## Testing
+
+Copy all the dependencies from elm-package.json into tests/elm-package.json. These dependencies need to stay in sync, 
+so make sure whenever you change your dependencies in your current elm-package.json, you make the same change to tests/elm-package.json.
+
+Run `npm test`: will validate with elm-format and run the unit tests with elm-test.
 
 
 ## Generating key
