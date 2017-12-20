@@ -12,3 +12,7 @@ deploy:
     local_dir: docs
     on:
       branch: develop
+cache:
+  directories:
+    - elm-stuff/build-artifacts
+    - tests/elm-stuff/build-artifacts
