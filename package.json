@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run format-validate && ./node_modules/.bin/elm-test",
-    "format": "elm-format app/src tests/*.elm --yes",
-    "format-validate": "elm-format app/src tests/*.elm --validate",
+    "format": "./node_modules/.bin/elm-format app/src tests/*.elm --yes",
+    "format-validate": "./node_modules/.bin/elm-format app/src tests/*.elm --validate",
     "build": "npm test && ./node_modules/.bin/webpack",
     "start": "npm run format && ./node_modules/.bin/concurrently \"node scripts/server.js\" \"./node_modules/.bin/webpack-dev-server --hot\"",
     "postinstall": "elm package install --yes && cd tests && elm package install --yes"
@@ -28,8 +28,7 @@
   },
   "peerDependencies": {
     "http-server": "^0.10.0",
-    "elm": "^0.18.0",
-    "elm-format": "^0.7.0-exp"
+    "elm": "^0.18.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -38,6 +37,7 @@
     "cors-anywhere": "0.4.0",
     "css-loader": "^0.28.7",
     "elm-assets-loader": "^0.3.0",
+    "elm-format": "^0.7.0-exp",
     "elm-test": "^0.18.12",
     "elm-webpack-loader": "^4.4.0",
     "file-loader": "^1.1.5",
