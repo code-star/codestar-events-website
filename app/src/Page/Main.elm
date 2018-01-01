@@ -52,15 +52,23 @@ init : ( Model, Cmd Msg )
 init =
     --( Model "Elm" Material.model initialDiceRoller, Cmd.none )
     ( Model "Elm" Material.model initialDiceRoller TwitterFeed.State.initialModel, initCmd )
+
+
+
 -- UPDATE
+
 
 initCmd : Cmd Msg
 initCmd =
     Cmd.none
+
+
+
 -- TODO this gives a typing error
 --    Cmd.batch
 --        [ initTwitterFeedCmd
 --        ]
+
 
 updateCmd : Msg -> Model -> Cmd Msg
 updateCmd msg model =

@@ -2,13 +2,12 @@ module TwitterFeed.Update exposing (..)
 
 import Html
 import Http exposing (Request)
+import Page.Msg as Main exposing (..)
 import Task
 import TwitterFeed.Rest exposing (..)
 import TwitterFeed.State exposing (..)
 import TwitterFeed.Types exposing (..)
 import TwitterFeed.View exposing (..)
-
-import Page.Msg as Main exposing (..)
 
 
 -- Structure of this module is based on http://blog.jenkster.com/2016/04/how-i-structure-elm-apps.html
@@ -54,8 +53,6 @@ updateTwitterFeedModel msg model =
 
 
 -- SUBSCRIPTIONS
-
-
 --subscriptions : Model -> Sub Msg
 --subscriptions model =
 --    Sub.none
