@@ -1,5 +1,9 @@
 module Main exposing (..)
 
+import DiceRoller.State exposing (initialDiceRoller)
+import DiceRoller.Types exposing (DiceRoller)
+import DiceRoller.Update exposing (updateDiceRoller, updateDiceRollerCmd)
+import DiceRoller.View exposing (viewDiceRoller)
 import Html exposing (Html, a, br, div, h1, h2, h4, h5, iframe, img, input, p, program, section, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
@@ -34,23 +38,40 @@ main =
 type alias Model =
     { name : String
     , mdl : Material.Model
+    , diceRoller: DiceRoller
     }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( Model "Elm" Material.model, Cmd.none )
+    ( Model "Elm" Material.model initialDiceRoller, Cmd.none )
+
+
+-- UPDATE
+
+updateCmd : Msg -> Model -> Cmd Msg
+updateCmd msg model =
+    Cmd.batch
+        [ updateDiceRollerCmd msg
+        ]
+
+updateModel : Msg -> Model -> Model
+updateModel msg model =
+    case msg of
+        Mdl msg_ ->
+            -- Material.update Mdl msg_ model
+            model
+
+        Name name ->
+            { model | name = name }
+
+        MsgForDiceRoller msg ->
+            { model | diceRoller = updateDiceRoller msg model.diceRoller }
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
-        Mdl msg_ ->
-            -- Material.update Mdl msg_ model
-            ( model, Cmd.none )
-
-        Name name ->
-            ( { model | name = name }, Cmd.none )
+    (updateModel msg model, updateCmd msg model)
 
 
 
@@ -101,6 +122,12 @@ view model =
             , h2 [] [ Html.text "[Social Media icons]" ]
             , a [ href "https://www.codestar.nl/#join", class "jobs-link" ]
                 [ Html.text "We're hiring!" ]
+            ]
+        , section
+            [ class "page"
+            , style [ ("background", "rgba(0,0,0,0.5)") ]
+            ]
+            [ viewDiceRoller model.diceRoller
             ]
         , viewLandingPage model
         , eventsPage model "#0C4D90"
