@@ -1,22 +1,27 @@
 module Main exposing (..)
 
+--import Html.Events exposing (onClick, onInput)
+--import Material.Chip as Chip exposing (..)
+--import Material.Color as Color
+--import Material.Menu as Menu exposing (render)
+
 import DiceRoller.State exposing (initialDiceRoller)
 import DiceRoller.Types exposing (DiceRoller)
 import DiceRoller.Update exposing (updateDiceRoller, updateDiceRollerCmd)
 import DiceRoller.View exposing (viewDiceRoller)
 import Html exposing (Html, a, br, div, h1, h2, h4, h5, iframe, img, input, p, program, section, text)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick, onInput)
 import Material
 import Material.Button as Button
 import Material.Card as Card exposing (..)
-import Material.Chip as Chip exposing (..)
-import Material.Color as Color
 import Material.Grid exposing (Device(..), cell, grid, size)
-import Material.Menu as Menu exposing (render)
 import Material.Options as Options exposing (Style, cs, css)
 import Page.Assets exposing (..)
 import Page.Msg as Main exposing (..)
+import TwitterFeed.State
+import TwitterFeed.Types
+import TwitterFeed.Update exposing (initTwitterFeedCmd, updateTwitterFeedModel)
+import TwitterFeed.View
 
 
 -- MAIN
@@ -38,22 +43,31 @@ main =
 type alias Model =
     { name : String
     , mdl : Material.Model
-    , diceRoller: DiceRoller
+    , diceRoller : DiceRoller
+    , twitterFeed : TwitterFeed.Types.Model
     }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( Model "Elm" Material.model initialDiceRoller, Cmd.none )
-
-
+    --( Model "Elm" Material.model initialDiceRoller, Cmd.none )
+    ( Model "Elm" Material.model initialDiceRoller TwitterFeed.State.initialModel, initCmd )
 -- UPDATE
+
+initCmd : Cmd Msg
+initCmd =
+    Cmd.none
+-- TODO this gives a typing error
+--    Cmd.batch
+--        [ initTwitterFeedCmd
+--        ]
 
 updateCmd : Msg -> Model -> Cmd Msg
 updateCmd msg model =
     Cmd.batch
         [ updateDiceRollerCmd msg
         ]
+
 
 updateModel : Msg -> Model -> Model
 updateModel msg model =
@@ -68,10 +82,13 @@ updateModel msg model =
         MsgForDiceRoller msg ->
             { model | diceRoller = updateDiceRoller msg model.diceRoller }
 
+        MsgForTwitterFeed msg ->
+            { model | twitterFeed = updateTwitterFeedModel msg model.twitterFeed }
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    (updateModel msg model, updateCmd msg model)
+    ( updateModel msg model, updateCmd msg model )
 
 
 
@@ -125,10 +142,11 @@ view model =
             ]
         , section
             [ class "page"
-            , style [ ("background", "rgba(0,0,0,0.5)") ]
+            , style [ ( "background", "rgba(0,0,0,0.5)" ) ]
             ]
             [ viewDiceRoller model.diceRoller
             ]
+        , TwitterFeed.View.view model.twitterFeed
         , viewLandingPage model
         , eventsPage model "#0C4D90"
         , viewDifferencePage model

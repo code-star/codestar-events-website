@@ -1,8 +1,10 @@
 module TwitterFeed.View exposing (..)
 
+--import Html.Events exposing (onClick)
+
 import Html exposing (Attribute, Html, br, div, h4, iframe, img, input, p, program, section, text)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
+import Page.Msg exposing (..)
 import TwitterFeed.State exposing (..)
 import TwitterFeed.Style exposing (..)
 import TwitterFeed.Types exposing (..)

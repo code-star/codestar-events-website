@@ -4,7 +4,7 @@ import Http
 import TwitterFeed.Types exposing (..)
 
 
-type Msg
+type TwitterFeedMsg
     = NewTweets (Result Http.Error (List Tweet))
 
 
