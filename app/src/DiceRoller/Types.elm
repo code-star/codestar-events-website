@@ -1,6 +1,6 @@
 module DiceRoller.Types exposing (..)
 
-type alias DiceRoller = {
-    dieFace : Int
-    }
 
+type alias DiceRoller =
+    { dieFace : Int
+    }
