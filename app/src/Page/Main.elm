@@ -27,6 +27,7 @@ import TwitterFeed.View
 -- MAIN
 
 
+main : Program Never Model Msg
 main =
     Html.program
         { init = init
@@ -62,6 +63,7 @@ initCmd : Cmd Msg
 initCmd =
     initTwitterFeedCmd
         |> Cmd.map MsgForTwitterFeed
+
 
 updateCmd : Msg -> Model -> Cmd Msg
 updateCmd msg model =
