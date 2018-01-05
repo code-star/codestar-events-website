@@ -18,7 +18,7 @@ import Material.Grid exposing (Device(..), cell, grid, size)
 import Material.Options as Options exposing (Style, cs, css)
 import Page.Assets exposing (..)
 import Page.Msg as Main exposing (..)
-import TwitterFeed.State
+import TwitterFeed.State exposing (TwitterFeedMsg)
 import TwitterFeed.Types
 import TwitterFeed.Update exposing (initTwitterFeedCmd, updateTwitterFeedModel)
 import TwitterFeed.View
@@ -60,15 +60,8 @@ init =
 
 initCmd : Cmd Msg
 initCmd =
-    Cmd.none
-
-
-
--- TODO this gives a typing error
---    Cmd.batch
---        [ initTwitterFeedCmd
---        ]
-
+    initTwitterFeedCmd
+        |> Cmd.map MsgForTwitterFeed
 
 updateCmd : Msg -> Model -> Cmd Msg
 updateCmd msg model =
