@@ -3,7 +3,7 @@ module Main exposing (..)
 --import Html.Events exposing (onClick, onInput)
 --import Material.Chip as Chip exposing (..)
 --import Material.Color as Color
---import Material.Menu as Menu exposing (render)
+--import Material.Menu as Menu exposing (render) -- test
 
 import DiceRoller.State exposing (initialDiceRoller)
 import DiceRoller.Types exposing (DiceRoller)
