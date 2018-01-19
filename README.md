@@ -1,12 +1,11 @@
 # elm-codestar-website
+
 Elm rebuild of codestar.nl
 
-https://guide.elm-lang.org/install.html
 
+## Develop
 
-## Run
-
-* nvm use 8.2.x
+* nvm use
 * installation: `npm install`
 * set up symlink for debugging: `ln -s /docs/img /debug/img` (use absolute paths in MacOS)
 * run `npm start`
@@ -14,42 +13,44 @@ https://guide.elm-lang.org/install.html
 
 npm-watch does not work correctly on MacOS: https://github.com/M-Zuber/npm-watch/issues/35
 
-## Develop
-* run `npm run watch` to start Gulp with live reload
-* run `elm reactor` to start the development server
-* go to [http://localhost:8000/debug/index.html](http://localhost:8000/debug/index.html)   
-
 
 ## Build
 
-* nvm use 8.0.0
-* run `npm run build`
-* Result is in 'docs' dir. You can run `http-server` in it to test and when pushing the repo the files will be hosted on gh-pages from de docs dir.
+* nvm use
+* Run `npm run build`
+* This is also run by CI
+* Tests if formatted and runs tests from tests/ dir
+* Result is in 'docs' dir. You can run `http-server` in it to test and when pushing the repo the files will 
+be hosted on gh-pages from de docs dir.
 
-	
+
+## Testing
+
+Copy all the dependencies from elm-package.json into tests/elm-package.json. These dependencies need to stay 
+in sync, so make sure whenever you change your dependencies in your current elm-package.json, you make the 
+same change to tests/elm-package.json.
+
+Run `npm test`: will validate with elm-format and run the unit tests with elm-test.
+
+
 ## Formatting
 
-Please run [elm-format](https://github.com/avh4/elm-format) on all your code before pushing to the repo for [consistency](https://github.com/avh4/elm-format#elm-format).
+Please run [elm-format](https://github.com/avh4/elm-format) on all your code before pushing to the repo 
+for [consistency](https://github.com/avh4/elm-format#elm-format).
 
-### Installation and run once
-
-* `npm install -g elm-format@exp`
-* commit your code before formatting?
-* `elm-format app/src/`
+Formatting is executed once on `npm start` or manually with `npm run format`.
 
 ### Formatting in editor
 
 Set up according to editor specific guide on https://github.com/avh4/elm-format
 
-If it works well, it can be added to `npm run start`, e.g. with `"start": "npm run format && concurrently --kill-others \"http-server docs\" \"npm run watch\""`
 
-## Testing
+## Notes
 
-Copy all the dependencies from elm-package.json into tests/elm-package.json. These dependencies need to stay in sync, 
-so make sure whenever you change your dependencies in your current elm-package.json, you make the same change to tests/elm-package.json.
+### Elm Guide
 
-Run `npm test`: will validate with elm-format and run the unit tests with elm-test.
+https://guide.elm-lang.org/install.html
 
+### Generating key
 
-## Generating key
 `openssl base64 -in key -out encodedKey`
