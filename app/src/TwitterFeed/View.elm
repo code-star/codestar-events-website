@@ -33,23 +33,16 @@ tweetUser tweet =
 renderTweet : Tweet -> Html Msg
 renderTweet tweet =
     div
-        [ twitterFeedStyle ]
-        [ div
-            [ twitterFeedImgWrapperStyle ]
-            [ img
-                [ src (tweetImageUrl tweet)
-                , twitterFeedImgStyle
-                ]
-                []
-            ]
+        [ class "social-item" ]
+        [ img [ src (tweetImageUrl tweet) ] []
         , div
             []
             [ h4
                 []
                 [ text (tweetUser tweet) ]
-            , p
-                [ tweetTimeStyle ]
-                [ text tweet.createdAt ]
+--            , p
+--                []
+--                [ text tweet.createdAt ]
             , p
                 []
                 [ text tweet.text ]
@@ -59,7 +52,7 @@ renderTweet tweet =
 
 renderTweets : List Tweet -> Html Msg
 renderTweets tweet =
-    div [] (List.map renderTweet tweet)
+    div [ class "social-items" ] (List.map renderTweet tweet)
 
 
 sliceText : String -> Int -> String

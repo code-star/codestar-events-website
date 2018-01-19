@@ -144,12 +144,21 @@ view model =
                 [ Html.text "We're hiring!" ]
             ]
         , section
-            [ class "page"
-            , style [ ( "background", "rgba(0,0,0,0.5)" ) ]
+            [ style
+                [ ( "background", "rgba(0,0,0,0.5)" )
+                , ( "margin-top", "6em" ) ------
+                ]
             ]
             [ viewDiceRoller model.diceRoller
             ]
-        , TwitterFeed.View.view model.twitterFeed
+        , grid []
+              [ cell [ Material.Grid.offset Desktop 3, Material.Grid.size Desktop 6, Material.Grid.size Tablet 10, Material.Grid.size Phone 12 ]
+                  [ Card.view
+                      [ css "width" "100%"
+                      ]
+                      [ Card.text [] [ TwitterFeed.View.view model.twitterFeed ] ]
+                  ]
+              ]
         , viewLandingPage model
         , eventsPage model "#0C4D90"
         , viewDifferencePage model
