@@ -72,10 +72,10 @@ renderTweet tweet =
 
 isNotRetweet : Tweet -> Bool
 isNotRetweet tweet =
-    let
-        _ =
-            Debug.log "foo" tweet
-    in
+    --    let
+    --        _ =
+    --            Debug.log "foo" tweet
+    --    in
     if tweet.retweetUsername == Nothing then
         True
     else
@@ -126,11 +126,23 @@ sliceText text limit =
         text
 
 
+renderTweetListIfNoError : Model -> Html Msg
+renderTweetListIfNoError model =
+    if model.message == "" then
+        div [ class "tweet-list" ]
+            [ renderTweets model.tweets ]
+    else
+        div [] []
+
+
 view : Model -> Html Msg
 view model =
+    let
+        tweetList =
+            renderTweetListIfNoError model
+    in
     div [ class "twitter-feed" ]
-        [ div [ class "tweet-list" ]
-            [ renderTweets model.tweets ]
+        [ tweetList
         , div [ feedErrorStyle ]
             [ text model.message ]
         ]
