@@ -1,61 +1,67 @@
 .social-items {
   display: flex; // this is a flex container
   flex-wrap: wrap;
+  //justify-content: space-between;
 }
 
 .social-item {
   display: flex; // this is a flex container
   flex-grow: 1;
-  height: 100px;
+  height: 110px;
   margin: 0.3em;
   overflow: hidden;
   width: 180px;
+  text-decoration: none;
+  color: @textColor;
+  font-family: Conduit;
 
-  img {
-    height: 40px;
+  &:hover {
+    background-color: #b7b7b7;
+    color: black;
+    transition: background-color 500ms, color 500ms;
+  }
+
+  img, .img {
     margin-right: 0.2em;
-    width: 40px;
-    flex-basis: 40px;
+    // When scaling images, Chrome requires width, height, max-width and max-height
+    width: auto;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+    //flex-basis: 40px;
   }
 
-  > div h4 {
-    font-size: 1.2em;
-    margin: 0;
+  .author {
+    color: @authorTextColor;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 0.5em;
   }
 
-  > div p {
+  > div {
     overflow: hidden;
   }
+
 }
 
 .social-item-placeholder {
-  > div {
+  .img {
+    background-color: @authorTextColor;
+    width: 40px;
+    height: 40px;
+  }
+
+  .author {
+    background-color: @authorTextColor;
+    height: 0.6em;
+    width: 60%;
+  }
+
+  .content {
     width: 100%;
-  }
-
-  h4, p {
-    &::before {
-      content: '-';
-      width: 100%;
-      display: inline-block;
-      background-color: #ccc;
-      line-height: 0.7em;
-      text-indent: -9999px;
+    &::after {
+      content: '■■■ ■■■■ ■■■■■■ ■■■■ ■■■■■■■■ ■■■ ■■■■ ■■■■■■■■ ■■■';
+      letter-spacing: -0.15em;
     }
-  }
-
-  p::before {
-    line-height: 0.5em;
-    width: 95%;
-  }
-
-  p::after {
-    content: '-';
-    width: 90%;
-    display: inline-block;
-    background-color: #ccc;
-    line-height: 0.5em;
-    text-indent: -9999px;
-    margin-top: -0.3em;
   }
 }

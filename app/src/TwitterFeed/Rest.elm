@@ -2,6 +2,7 @@ module TwitterFeed.Rest exposing (..)
 
 import Http exposing (Body, Header, Request, expectJson, header, stringBody)
 import Json.Decode exposing (Decoder, at, bool, field, int, map7, oneOf, string, succeed)
+import Json.Decode.Extra exposing (andMap)
 import Json.Encode
 import Task exposing (Task)
 import TwitterFeed.State exposing (..)
@@ -91,13 +92,19 @@ tweetsDecoder =
     Json.Decode.list tweetDecoder
 
 
+
+-- .map does not scale above .map8 see also http://package.elm-lang.org/packages/circuithub/elm-json-extra/latest/Json-Decode-Extra#%7C:
+
+
 tweetDecoder : Decoder Tweet
 tweetDecoder =
-    Json.Decode.map7 Tweet
-        (at [ "user", "name" ] Json.Decode.string)
-        (at [ "user", "screen_name" ] Json.Decode.string)
-        (at [ "text" ] Json.Decode.string)
-        (at [ "user", "profile_image_url" ] Json.Decode.string)
-        (Json.Decode.maybe <| Json.Decode.field "retweeted_status" (at [ "user", "profile_image_url" ] Json.Decode.string))
-        (Json.Decode.maybe <| Json.Decode.field "retweeted_status" (at [ "user", "name" ] Json.Decode.string))
-        (at [ "created_at" ] Json.Decode.string)
+    succeed Tweet
+        |> andMap (at [ "user", "name" ] Json.Decode.string)
+        |> andMap (at [ "user", "screen_name" ] Json.Decode.string)
+        |> andMap (field "text" Json.Decode.string)
+        |> andMap (field "id_str" Json.Decode.string)
+        |> andMap (at [ "user", "profile_image_url" ] Json.Decode.string)
+        |> andMap (Json.Decode.maybe <| Json.Decode.field "retweeted_status" (at [ "user", "profile_image_url" ] Json.Decode.string))
+        |> andMap (Json.Decode.maybe <| Json.Decode.field "retweeted_status" (at [ "user", "name" ] Json.Decode.string))
+        |> andMap (Json.Decode.maybe <| Json.Decode.field "retweeted_status" (at [ "user", "screen_name" ] Json.Decode.string))
+        |> andMap (field "created_at" Json.Decode.string)

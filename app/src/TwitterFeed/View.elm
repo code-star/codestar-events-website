@@ -2,7 +2,7 @@ module TwitterFeed.View exposing (..)
 
 --import Html.Events exposing (onClick)
 
-import Html exposing (Attribute, Html, br, div, h4, iframe, img, input, p, program, section, text)
+import Html exposing (Attribute, Html, a, br, div, h4, iframe, img, input, p, program, section, span, text)
 import Html.Attributes exposing (..)
 import Page.Msg exposing (..)
 import TwitterFeed.State exposing (..)
@@ -30,67 +30,85 @@ tweetUser tweet =
             val
 
 
+tweetScreenname : Tweet -> String
+tweetScreenname tweet =
+    case tweet.retweetScreenname of
+        Nothing ->
+            "@" ++ tweet.screenName
+
+        Just val ->
+            "@" ++ val
+
+
+tweetLink : Tweet -> String
+tweetLink tweet =
+    case tweet.retweetScreenname of
+        Nothing ->
+            "https://twitter.com/" ++ tweet.screenName ++ "/status/" ++ tweet.id
+
+        Just val ->
+            "https://twitter.com/" ++ val ++ "/status/" ++ tweet.id
+
+
 renderTweet : Tweet -> Html Msg
 renderTweet tweet =
-    div
-        [ class "social-item" ]
+    a
+        [ class "social-item"
+        , href (tweetLink tweet)
+        ]
         [ img [ src (tweetImageUrl tweet) ] []
         , div
             []
-            [ h4
-                []
-                [ text (tweetUser tweet) ]
-
-            --            , p
-            --                []
-            --                [ text tweet.createdAt ]
-            , p
-                []
-                [ text tweet.text ]
+            [ span [ class "author" ] [ text (tweetScreenname tweet) ]
+            , text tweet.text
             ]
         ]
 
 
 
--- TODO show placeholder
--- TODO filter and truncate to 4 items
--- TODO fill up available space
 -- TODO call new Scala endpoint
+-- TODO why is webpack not watching this file (or any other Elm file except Main.elm)?
 
 
 isNotRetweet : Tweet -> Bool
 isNotRetweet tweet =
---    let
---        _ = Debug.log "foo" tweet
---    in
+    let
+        _ =
+            Debug.log "foo" tweet
+    in
     if tweet.retweetUsername == Nothing then
         True
     else
         False
 
--- TODO why is webpack not watching this file (or any other Elm file except Main.elm)?
 
 renderTweets : List Tweet -> Html Msg
 renderTweets tweets =
     let
-        tweetLimit = 5
+        tweetLimit =
+            5
+
         tweetsAsRenderedTweets =
             List.filter isNotRetweet tweets
                 |> List.take tweetLimit
                 |> List.map renderTweet
---            List.map renderTweet tweet
---                |> List.filter isByCodestar
---                |> List.take 5
 
-        placeholderTweet = div
-                                           [ class "social-item social-item-placeholder" ]
-                                           [ div
-                                               []
-                                               [ h4 [] []
-                                               , p [] []
-                                               ]
-                                           ]
-        placeholderTweets = List.repeat tweetLimit placeholderTweet
+        --            List.map renderTweet tweet
+        --                |> List.filter isByCodestar
+        --                |> List.take 5
+        placeholderTweet =
+            div
+                [ class "social-item social-item-placeholder"
+                ]
+                [ div [ class "img" ] []
+                , div
+                    [ class "content" ]
+                    [ span [ class "author" ] []
+                    ]
+                ]
+
+        placeholderTweets =
+            List.repeat tweetLimit placeholderTweet
     in
     div [ class "social-items" ]
         (if List.isEmpty tweetsAsRenderedTweets then
