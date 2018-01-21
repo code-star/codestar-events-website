@@ -152,13 +152,13 @@ view model =
             [ viewDiceRoller model.diceRoller
             ]
         , grid []
-              [ cell [ Material.Grid.offset Desktop 3, Material.Grid.size Desktop 6, Material.Grid.size Tablet 10, Material.Grid.size Phone 12 ]
-                  [ Card.view
-                      [ css "width" "100%"
-                      ]
-                      [ Card.text [] [ TwitterFeed.View.view model.twitterFeed ] ]
-                  ]
-              ]
+            [ cell [ Material.Grid.offset Desktop 3, Material.Grid.size Desktop 6, Material.Grid.size Tablet 10, Material.Grid.size Phone 12 ]
+                [ Card.view
+                    [ css "width" "100%"
+                    ]
+                    [ Card.text [] [ TwitterFeed.View.view model.twitterFeed ] ]
+                ]
+            ]
         , viewLandingPage model
         , eventsPage model "#0C4D90"
         , viewDifferencePage model

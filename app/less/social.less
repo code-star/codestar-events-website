@@ -5,13 +5,17 @@
 
 .social-item {
   display: flex; // this is a flex container
+  flex-grow: 1;
   height: 100px;
+  margin: 0.3em;
   overflow: hidden;
   width: 180px;
+
   img {
     height: 40px;
     margin-right: 0.2em;
     width: 40px;
+    flex-basis: 40px;
   }
 
   > div h4 {
@@ -21,5 +25,37 @@
 
   > div p {
     overflow: hidden;
+  }
+}
+
+.social-item-placeholder {
+  > div {
+    width: 100%;
+  }
+
+  h4, p {
+    &::before {
+      content: '-';
+      width: 100%;
+      display: inline-block;
+      background-color: #ccc;
+      line-height: 0.7em;
+      text-indent: -9999px;
+    }
+  }
+
+  p::before {
+    line-height: 0.5em;
+    width: 95%;
+  }
+
+  p::after {
+    content: '-';
+    width: 90%;
+    display: inline-block;
+    background-color: #ccc;
+    line-height: 0.5em;
+    text-indent: -9999px;
+    margin-top: -0.3em;
   }
 }

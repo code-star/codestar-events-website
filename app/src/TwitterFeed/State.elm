@@ -35,6 +35,6 @@ maxVideoDescriptionLength =
 
 initialModel : Model
 initialModel =
-    { message = "Fetching tweets..."
+    { message = ""
     , tweets = []
     }
