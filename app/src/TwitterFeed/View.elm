@@ -86,7 +86,7 @@ renderTweets : List Tweet -> Html Msg
 renderTweets tweets =
     let
         tweetLimit =
-            5
+            4
 
         tweetsAsRenderedTweets =
             List.filter isNotRetweet tweets
