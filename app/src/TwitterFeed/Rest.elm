@@ -19,10 +19,9 @@ authHeaders =
     ]
 
 
-userTimelineHeaders : String -> List Header
-userTimelineHeaders authToken =
-    [ header "Authorization" ("Bearer " ++ authToken)
-    , header "Content-Type" "application/x-www-form-urlencoded;charset=UTF-8"
+userTimelineHeaders : List Header
+userTimelineHeaders =
+    [ header "Content-Type" "application/x-www-form-urlencoded;charset=UTF-8"
     ]
 
 
@@ -49,28 +48,29 @@ makeRequest method url headers body resultDecoder =
         }
 
 
-getAuthToken : Task Http.Error String
-getAuthToken =
-    let
-        body =
-            "grant_type=client_credentials"
-                |> Http.stringBody "application/x-www-form-urlencoded"
 
-        post =
-            makeRequest "POST" "http://localhost:8080/https://api.twitter.com/oauth2/token" authHeaders body tokenDecoder
-    in
-    post
-        |> Http.toTask
+--getAuthToken : Task Http.Error String
+--getAuthToken =
+--    let
+--        body =
+--            "grant_type=client_credentials"
+--                |> Http.stringBody "application/x-www-form-urlencoded"
+--
+--        post =
+--            makeRequest "POST" "http://localhost:8080/https://api.twitter.com/oauth2/token" authHeaders body tokenDecoder
+--    in
+--    post
+--        |> Http.toTask
 
 
-getUserTimeline : String -> Task Http.Error (List Tweet)
-getUserTimeline authToken =
+getUserTimeline : Task Http.Error (List Tweet)
+getUserTimeline =
     let
         body =
             "" |> Http.stringBody "application/x-www-form-urlencoded"
 
         post =
-            makeRequest "GET" "http://localhost:8080/https://api.twitter.com/1.1/statuses/user_timeline.json?count=15&screen_name=Codestar_nl" (userTimelineHeaders authToken) body tweetsDecoder
+            makeRequest "GET" "http://codestar-twitterfeed.herokuapp.com/twitter" userTimelineHeaders body tweetsDecoder
     in
     post
         |> Http.toTask
@@ -78,8 +78,12 @@ getUserTimeline authToken =
 
 fetchTweets : Task Http.Error (List Tweet)
 fetchTweets =
-    getAuthToken
-        |> Task.andThen (\token -> getUserTimeline token)
+    getUserTimeline
+
+
+
+--    getAuthToken
+--        |> Task.andThen (\token -> getUserTimeline token)
 
 
 tokenDecoder : Decoder String

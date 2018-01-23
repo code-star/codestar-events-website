@@ -8,7 +8,7 @@
     "format": "./node_modules/.bin/elm-format app/src tests/*.elm --yes",
     "format-validate": "./node_modules/.bin/elm-format app/src tests/*.elm --validate",
     "build": "npm test && ./node_modules/.bin/webpack",
-    "start": "npm run format && ./node_modules/.bin/concurrently \"node scripts/server.js\" \"./node_modules/.bin/webpack-dev-server --hot\"",
+    "start": "npm run format && ./node_modules/.bin/webpack-dev-server --hot",
     "postinstall": "elm package install --yes && cd tests && elm package install --yes"
   },
   "repository": {
